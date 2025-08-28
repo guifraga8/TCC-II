@@ -1,0 +1,453 @@
+%
+% Exemplo LaTeX de artigo UNISINOS
+%
+% Elaborado com base nas orientações dadas no documento
+% ``GUIA PARA ELABORAÇÃO DE TRABALHOS ACADÊMICOS''
+% disponível no site da biblioteca da Unisinos.
+% http://www.unisinos.br/biblioteca
+% 
+% Os elementos textuais abaixo são apresentados na ordem em que devem
+% aparecer no documento.  Repare que nem todos são obrigatórios - isso
+% é devidamente indicado em cada caso.
+%
+% Comentários abaixo colocados entre aspas (`` '') foram
+% extraídos diretamente do documento da biblioteca.
+%
+% Este documento é de domínio público.
+%
+
+%=======================================================================
+% Declarações iniciais identificando a classe de documento e
+% selecionando alguns pacotes adicionais.
+%
+% As opções disponíveis (separe-as com vírgulas, sem espaço) são:
+% - twoside: Formata o documento para impressão frente-e-verso
+%   (o default é somente-frente)
+% - english,brazilian,french,german,etc.: idiomas usados no documento.
+%   Deve ser colocado por último o idioma principal.
+%=======================================================================
+\documentclass[english,brazilian]{UNISINOSartigo} %twoside
+\usepackage[utf8]{inputenc} % charset do texto (utf8, latin1, etc.)
+\usepackage[T1]{fontenc} % encoding da fonte (afeta a sep. de sílabas)
+\usepackage{graphicx} % comandos para gráficos e inclusão de figuras
+\usepackage{bibentry} % para inserir refs. bib. no meio do texto
+\usepackage{float}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{newfloat}
+\usepackage{setspace}
+\usepackage{enumitem}
+\usepackage{placeins}
+%\usepackage{longtable}
+
+\DeclareFloatingEnvironment[
+fileext=loq,
+listname={Lista de Quadros},
+name=Quadro,
+%placement=p,
+%within=section,
+%chapterlistsgaps=off
+]{quadro}
+
+\newcolumntype{L}{>{\centering\arraybackslash}m{6.2cm}}
+\newcolumntype{G}{>{\centering\arraybackslash}m{5.5cm}}
+\newcolumntype{A}{>{\centering\arraybackslash}m{2.4cm}}
+\newcolumntype{B}{>{\centering\arraybackslash}m{7.5cm}}
+%=======================================================================
+% Escolha do sistema para geração de referências bibliográficas.
+%
+% O default é usar o estilo unisinos.bst.  Comente a definição abaixo
+% e descomente a linha seguinte para usar o estilo do ABNTeX (é
+% necessário ter esse pacote instalado).
+%
+% A vantagem do unisinos.bst é que ele permite o uso de um arquivo .bib
+% seguindo as orientações tradicionais do BibTeX (veja essas orientações
+% em http://ctan.tug.org/tex-archive/biblio/bibtex/contrib/doc/btxdoc.pdf).
+% Entretanto, o estilo não suporta algumas citações mais exóticas como
+% apud.  Para isso, use o ABNTeX, mas esteja ciente de que muitas de
+% suas referências serão incompatíveis com os estilos tradicionais do
+% BibTeX como plain, alpha, ieeetr, entre outros.
+%=======================================================================
+\usepackage[alf]{abntex2cite}
+
+\autor{CLOSS FRAGA}{GUILHERME}
+\titulo{O Impacto da Inteligência Artificial no Processo de Desenvolvimento de \textit{Software}:}
+\subtitulo{Um estudo comparativo entre desenvolvedores com e sem o uso de ferramentas de IA}
+\orientador[Prof.]{Francisco}{Rosemary}
+%\coorientador[Prof.~Dr.]{Lamport}{Leslie}
+\local{São Leopoldo}
+\ano{2025}
+\unidade{Unidade Acadêmica de Graduação}
+\curso{Curso de Bacharelado em Ciência da Computação}
+\natureza{%
+Artigo apresentado como requisito parcial para obtenção do título de Bacharel em Ciência da Computação, pelo Curso de Ciência da Computação da Universidade do Vale do Rio dos Sinos (UNISINOS)}
+
+%=======================================================================
+% Início do documento.
+%=======================================================================
+
+\begin{document}
+\capa
+\folhaderosto
+
+% Diferentemente do normal, os comandos a seguir devem vir aqui mesmo,
+% e não antes do \begin{document} onde seria o lugar deles. 
+\tituloArtigo{O Impacto da Inteligência Artificial no Processo de Desenvolvimento de \textit{Software}:}{Um estudo comparativo entre desenvolvedores com e sem o uso de ferramentas de IA}
+\autorArtigo{Guilherme Closs Fraga\footnote{Graduando em de Ciência da Computação pela Unisinos.  Email: guifraga8@edu.unisinos.br}}
+\autorArtigo{Rosemary Francisco\footnote{Mini-currículo do orientador. Email: rosemaryf@unisinos.br}}
+
+%=======================================================================
+% Resumo em Português.
+%
+% A recomendação é para 150 a 250 palavras.
+%=======================================================================
+\begin{abstract}
+Lorem ipslum.
+
+\palavraschave{lorem ipslum.}
+\end{abstract}
+
+\begin{otherlanguage}{english}
+\singlespacing
+\begin{abstract}
+Lorem ipslum.
+\end{abstract}
+\palavraschave{lorem ipslum.}
+\end{otherlanguage}
+
+%=======================================================================
+% Introdução
+%=======================================================================
+\section{Introdução}
+
+Lorem ipslum.
+
+\subsection{Proposta de Solução}
+
+Lorem ipslum.
+
+\subsection{Objetivos}
+
+Lorem ipslum.
+
+\subsubsection{Objetivo Geral}
+
+Lorem ipslum.
+
+\subsubsection{Objetivos Específicos}
+
+Lorem ipslum.
+\begin{enumerate}[label=\alph*), leftmargin=1.2cm, itemsep=0.1em, topsep=0.1em]
+    \item lorem ipslum;
+    \item lorem ipslum;
+    \item lorem ipslum;
+    \item lorem ipslum;
+    \item lorem ipslum;
+    \item lorem ipslum.
+\end{enumerate}
+
+\section{Fundamentação Teórica}
+
+Com base na temática que o presente trabalho visa abordar, se faz necessário discorrer sobre dois tópicos fundamentais para a construção e consolidação do mesmo, sendo eles: Desenvolvimento de \textit{Software} e IA Generativa (aplicada ao desenvolvimento de \textit{software}). Nas seções seguintes, os conceitos são explorados e detalhados a fim de estabelecer os fundamentos teóricos necessários para compor este trabalho.
+
+\subsection{Desenvolvimento de \textit{Software}}
+
+Um \textit{software} refere-se a todos os componentes não físicos de um computador, redes de computadores ou dispositivos móveis. Em linhas gerais, refere-se aos programas e aplicações, como o próprio sistema operacional, que fazem aquele aparelho (ou ferramenta) operar de acordo com o que o usuário necessita. Isto é, \textit{software} se trata de uma coleção de instruções, dados ou programas utilizados para operar computadores e executar determinadas tarefas \cite{coutinho2021}.
+
+Em outras palavras, pode-se dizer que é um termo genérico que se refere à aplicações, \textit{scripts} e programas executáveis em um determinado dispositivo. Assim, o diferencia de \textit{hardware}, que descreve os aspectos físicos de um aparelho. Sendo assim, podemos estabelecer o \textit{software} como um componente variável de um computador, enquanto o \textit{hardware} é constante \cite{sakurai2018}
+
+De acordo com \citeonline{maynard2015}, temos basicamente dois tipos de \textit{software}, sendo eles: \textit{software} de aplicativo e \textit{software} de sistema. Um aplicativo seria aquele que atende uma necessidade específica ou executa determinadas tarefas. E, segundo \citeonline{schwab2019}, \textit{software} de sistema seria a parte essencial para que o \textit{hardware} de um computador opere, servindo como a plataforma para a execução de aplicativos. Ademais, podemos mencionar outros tipos de \textit{software}, como os de programação, que são ferramentas necessárias para desenvolvedores, \textit{middlewares}, responsáveis por atuarem entre o \textit{software} do sistema e aplicativos e até mesmo \textit{drivers}, que são responsáveis por operarem dispositivos e periféricos de computadores.
+
+Por fim, a sincronia entre diferentes tipos de \textit{software} e \textit{hardware} é peça fundamental para o funcionamento eficiente de sistemas computacionais. Enquanto um aplicativo permite que seus usuários realizem determinadas tarefas, um sistema assegura que o \textit{hardware} opere corretamente, dando suporte para diferentes aplicações. Com a constante crescente de complexidade em sistemas modernos, a presença de um \textit{middleware} eficaz se torna indispensável para assegurar que diferentes \textit{softwares} funcionem em harmonia. Da mesma forma que, \textit{drivers} são indispensáveis para comunicação entre o sistema e periféricos, o que amplia as funcionalidades de um computador, resultando na melhoria da experiência do usuário.
+
+Sendo assim, os componentes técnicos de um computador são controlados por \textit{softwares}. Isto igualmente o difere do \textit{hardware} de um computador, rede ou dispositivo móvel, visto que ele não é fisicamente tangível. \citeonline{candido2022} diz que o sistema operacional nada mais é do que o \textit{software} fundamental de um computador ou dispositivo móvel. No que diz respeito aos termos de interface para o usuário, os três sistemas operacionais mais conhecidos, sendo eles \textit{Windows}, \textit{macOS} e \textit{Linux}, diferem. Outros programas e aplicações podem servir como complemento para as funções básicas de um sistema operacional. Eles podem ser instalados por meio de um \textit{driver} ou após \textit{download} e instalação. Estes programas incluem, por exemplo, o próprio \textit{MediaPlayer} ou \textit{Microsoft Office} da \textit{Microsoft} \cite{neto2019}.
+
+Além dos sistemas operacionais, existe uma ampla gama de \textit{softwares} utilitários voltados para funções específicas que visam aprimorar tanto o desempenho quanto a segurança do computador. Entre eles, destacam-se os programas antivírus, as ferramentas de \textit{backup} e os aplicativos de manutenção de disco, que atuam na proteção das informações e na preservação da eficiência do sistema. Somado a isso, o avanço tecnológico possibilitou o surgimento dos \textit{softwares} de virtualização, que permitem a execução de diferentes sistemas operacionais em uma única máquina física, ampliando a flexibilidade e otimizando a utilização dos recursos de \textit{hardware}.
+
+Em diversos dispositivos, o \textit{software} está diretamente integrado ao hardware, como ocorre em painéis eletrônicos de automóveis ou em máquinas de lavar. Exemplos comuns são os sistemas de navegação e os leitores de\textit{ Blu-Ray}, que funcionam sob controle de \textit{software}, mas não permitem substituição por alternativas diferentes. Segundo \citeonline{coutinho2021}, essas combinações fixas recebem a denominação de “embutidos”. Já na década de 1950, \textit{software} e \textit{hardware} eram concebidos como uma única unidade, em que o \textit{software} era tratado apenas como parte do \textit{hardware}, conhecido então como código de programa. Foi o estatístico John W. Tukey quem utilizou pela primeira vez o termo \textit{“software”} em 1958 \cite{maynard2015}. Conforme apontam \citeonline{sakurai2018}, somente cerca de vinte anos depois o governo dos Estados Unidos determinou que a IBM passasse a contabilizar seus componentes de \textit{hardware} e \textit{software} separadamente, decisão que abriu espaço para o fortalecimento de empresas especializadas no desenvolvimento de \textit{software}.
+
+O avanço tecnológico tornou possível a dissociação entre \textit{software} e \textit{hardware}, proporcionando maior flexibilidade e impulsionando a inovação no desenvolvimento de sistemas computacionais. Essa separação permitiu que os programas fossem atualizados sem a necessidade de alterações no \textit{hardware}, acelerando os ciclos de inovação. A especialização na produção de \textit{software} também deu origem a uma indústria sólida, formada por empresas voltadas à criação de soluções personalizadas para diferentes setores e demandas. Esse movimento não só ampliou as formas de utilização dos dispositivos, como também favoreceu o surgimento de novos modelos de negócio baseados em \textit{software}, os quais desempenham papel central na atual economia digital.
+
+\citeonline{schwab2019} destaca que o trabalho do programador consiste, de forma essencial, em traduzir requisitos e algoritmos para uma linguagem de programação que o computador consiga interpretar e executar. A partir desse processo, é possível desenvolver diferentes tipos de \textit{software}, como aplicativos, jogos e sistemas de controle para robôs. Um exemplo histórico ligado à ideia de programação foi a invenção de um \textit{tear} “programável” pelo francês Joseph-Marie Jacquard, que representou um marco na Revolução Industrial. O equipamento não possuía processador, sendo controlado por meio de cartões perfurados. Conforme explica \citeonline{maynard2015}, esses cartões não utilizavam valores binários como 0 e 1, mas funcionavam através da presença ou ausência de perfurações: um furo indicava uma ação de movimento, enquanto a ausência significava outra. A criação de Jacquard é considerada uma das precursoras da automação moderna.
+
+\citeonline{maynard2015} aponta que, em 1843, Augusta Ada King-Noel, mais conhecida como Ada Lovelace, desempenhou um papel marcante ao colaborar com Charles Babbage no projeto do \textit{Analytical Engine}, uma calculadora mecânica de uso geral que acabou não sendo concluída. Durante esse processo, Ada elaborou diversas anotações e descreveu um método para calcular os números de Bernoulli por meio da máquina, o que, segundo \citeonline{coutinho2021}, é considerado o primeiro programa de computador da história. Posteriormente, em 1941, Konrad Ernst Otto Zuse desenvolveu o Z3, reconhecido como o primeiro sistema de computação totalmente automatizado e programável do mundo.
+
+O Z3 foi construído a partir dos conceitos idealizados por Babbage e tinha como diferencial a capacidade de realizar operações, como a adição, em menos de um quarto de segundo. O propósito central de sua criação estava ligado à busca por maior eficiência nos cálculos. Nos primeiros anos, os \textit{softwares} eram desenvolvidos para máquinas específicas e eram comercializados em conjunto com o \textit{hardware}. Já na década de 1980, passaram a ser distribuídos em mídias físicas, como disquetes, e mais tarde em CDs e DVDs. Atualmente, grande parte dos \textit{softwares} é obtida por meio da \textit{Internet}, seja diretamente nos sites dos fabricantes ou através de plataformas de distribuição de aplicativos.
+
+Os modelos de ciclo de vida de \textit{software} descrevem as etapas que um sistema percorre desde sua concepção até sua desativação, organizando a sequência de atividades necessárias para o desenvolvimento. O objetivo central desses modelos é garantir qualidade, reduzir custos e otimizar o tempo de entrega. Entre as fases mais comuns estão:
+
+\begin{itemize}[leftmargin=1cm, itemsep=0.1em, topsep=0.1em]
+    \item Análise de Requisitos: onde são levantadas e documentadas as necessidades do sistema;
+    \item Design: define a arquitetura, fluxos de trabalho e tecnologias a serem utilizadas;
+    \item Implementação: fase em que o código é desenvolvido com base no planejamento estabelecido;
+    \item Testes: que envolvem diferentes tipos de verificação para assegurar a confiabilidade do \textit{software};
+    \item Manutenção: responsável por corrigir falhas e implementar melhorias após a entrega do sistema. 
+\end{itemize}
+
+De acordo com \citeonline{candido2022}, observa-se nos últimos anos uma tendência de desprofissionalização no aprendizado de programação, já que muitas pessoas têm adquirido essas habilidades de forma autodidata, recorrendo a tutoriais \textit{online} em vez de cursos formais. Além disso, o \textit{networking} global, aliado às diversas plataformas digitais, tem favorecido a formação de grandes comunidades que reúnem tanto entusiastas quanto programadores experientes, tornando cada vez menos nítida a distinção entre esses grupos.
+
+Ao mesmo tempo, percebe-se um avanço significativo nos padrões e na qualidade do desenvolvimento de \textit{software}. Os sistemas estão cada vez mais sofisticados e complexos, o que aumenta a demanda por soluções digitais. Esse contexto reflete uma sociedade em constante transformação, onde as necessidades mudam rapidamente, gerando uma procura crescente por Desenvolvedores \textit{Full Stack} (um profissional de tecnologia que possui a capacidade de trabalhar em todas as camadas de um projeto de \textit{softwar}) em detrimento de profissionais especializados apenas em uma área.
+
+A complexidade crescente dos sistemas requer profissionais capazes de atuar em todas as camadas do desenvolvimento, abrangendo desde o \textit{Frontend} (interface do usuário) até o \textit{Backend} (servidor, banco de dados e lógica de negócios de uma aplicação). Nesse cenário, os Desenvolvedores \textit{Full Stack} ganham destaque por sua flexibilidade e capacidade de adaptação às mudanças do mercado e às demandas dos usuários. Sua habilidade em compreender e integrar diferentes componentes de um sistema favorece um desenvolvimento mais unificado e eficiente, além de melhorar a comunicação e colaboração dentro das equipes. Assim, em um ambiente em que a agilidade e a adaptabilidade são fatores essenciais, esses profissionais se consolidam como recursos estratégicos para empresas que buscam manter a competitividade.
+
+O desenvolvimento de \textit{software} pode ser entendido como um conjunto de atividades voltadas ao projeto, criação, implementação e manutenção de programas que orientam o funcionamento de computadores, sendo independente do \textit{hardware} e responsável por torná-los programáveis \cite{schwab2019}. Segundo \citeonline{maynard2015}, esses programas podem ser classificados em três categorias principais:
+
+\begin{itemize}[leftmargin=1cm, itemsep=0.1em, topsep=0.1em]
+    \item \textit{Softwares} de sistema: englobam sistemas operacionais, utilitários e ferramentas de gerenciamento;
+    \item \textit{Softwares} de programação: oferecem recursos como compiladores e depuradores para os desenvolvedores;
+    \item \textit{Softwares} aplicativos: voltados ao usuário final, como ferramentas de produtividade, aplicativos de segurança e plataformas digitais, incluindo serviços online e aplicativos móveis. 
+\end{itemize}
+
+Outro tipo de \textit{software} é aquele voltado para sistemas embarcados, usados no controle de máquinas e dispositivos que nem sempre são reconhecidos como computadores, como redes telefônicas, veículos automotores e robôs industriais. Esses equipamentos, juntamente com seus \textit{softwares}, podem ser conectados dentro do ecossistema da Internet das Coisas (\textit{IoT}). Nesse contexto, programadores, engenheiros e desenvolvedores de \textit{software} exercem funções essenciais no desenvolvimento desses sistemas, com responsabilidades que frequentemente se sobrepõem e cuja dinâmica colaborativa pode variar dependendo do departamento ou da comunidade em que atuam.
+
+As soluções de engenharia de \textit{software} baseiam-se em métodos científicos e precisam ser eficazes na prática, de forma semelhante a estruturas como pontes ou elevadores. À medida que os produtos se tornam mais inteligentes, incorporando microprocessadores, sensores e \textit{software}, a responsabilidade dos engenheiros de \textit{software} aumenta. Atualmente, a competitividade de um produto no mercado não depende apenas do \textit{software} que ele utiliza, mas da integração eficiente entre todos os seus componentes.
+
+Conforme aponta \citeonline{candido2022}, o desenvolvimento de \textit{software} deve ser integrado ao desenvolvimento de produtos mecânicos e elétricos, o que faz com que o papel dos desenvolvedores de \textit{software} seja menos delimitado em comparação ao dos engenheiros. Esses profissionais podem focar em áreas específicas do projeto, como a codificação, enquanto o ciclo de vida do \textit{software} envolve a transformação de requisitos em funcionalidades, o trabalho em equipes multifuncionais, a gestão de processos e equipes, além de atividades de teste e manutenção.
+
+De acordo com \citeonline{schwab2019}, a atuação dos desenvolvedores de \textit{software} vai além das equipes de programação, envolvendo também cientistas e fabricantes de dispositivos e \textit{hardware}, que contribuem para a criação de códigos, mesmo não sendo os principais responsáveis pelo desenvolvimento. Essa participação não se limita às indústrias tradicionais de tecnologia da informação, abrangendo também empresas que não se dedicam exclusivamente à produção de \textit{software} ou semicondutores.
+
+A ampliação do papel dos desenvolvedores de \textit{software} evidencia a crescente integração da tecnologia da informação com diversas áreas, como ciência, medicina, engenharia e artes. Atualmente, o desenvolvimento de \textit{software} é fundamental para múltiplos setores, desde a indústria automotiva até o entretenimento, impulsionando a inovação e a transformação digital. Na indústria automotiva, esses profissionais são essenciais para o desenvolvimento de sistemas de condução autônoma e tecnologias avançadas de segurança. Já no cinema, os efeitos visuais e a animação digital dependem fortemente do \textit{software} para criar mundos e personagens realistas. Dessa forma, os desenvolvedores de \textit{software} exercem um papel cada vez mais diversificado e influente, moldando o futuro em diferentes áreas do conhecimento e da atividade humana.
+
+\subsubsection{Modelos de Desenvolvimento de \textit{Software}}
+
+Lorem ipslum.
+
+\subsubsection{Etapas do Processo de \textit{Software}}
+
+Lorem ipslum.
+
+\subsubsection{Ferramentas e Tecnologias}
+
+Ferramentas de desenvolvimento de \textit{software} são peças fundamentais no ciclo de construção de um determinado projeto, oferencedo suporte às equipes envolvidas em todas as etapas do processo, desde a concepção até a implementação ou manutenção de sistemas. Tais ferramentas possuem uma vasta variedade de recursos, destinadas a agilizar o processo de desenvolvimento de uma aplicação.
+
+Elas vão desde Ambientes de Desenvolvimento Integrado (\textit{Integrated Development Environment} ou \textit{IDEs}) até sistemas de controle de versão, testes e ferramentas que permitem análise de código. Por tanto, explorar categorias e funcionalidades de diferentes ferramentas para o desenvolvimento de \textit{software}, torna-se uma etapa crucial para entender qual ferramenta utilizar e como utilizar, de acordo com as tecnologias definidas para um determinado projeto. Afinal, a partir desta tomada de decisão que se torna possível beneficiar uma aplicação, impulsionando sua eficiência e até mesmo, a qualidade do do desenvolvimento.
+
+Para o projeto deste trabalho, a escolha das ferramentas/tecnologias \textit{Node.js}, \textit{Express.js}, \textit{Postman}, \textit{React} e \textit{PostgreSQL} foi baseada em suas funcionalidades robustas, porém simples de serem implementadas, o que permite o desenvolvimento de aplicações bem estruturadas com um baixo nível de complexidade.
+
+\setcounter{secnumdepth}{4} % Permite numeração até paragraph
+\setcounter{tocdepth}{4}    % Inclui no sumário
+
+\paragraph{\textit{Node.js} e \textit{Express.js}}
+
+\textit{Node.js} é um ambiente de execução \textit{JavaScript} orientado a eventos, criado em 2009, que permite rodar aplicações do lado do servidor. Ele utiliza o motor V8 do \textit{Google Chrome} para interpretar e executar o código, oferecendo alta performance e escalabilidade. Uma de suas principais vantagens é possibilitar que desenvolvedores utilizem \textit{JavaScript} tanto no \textit{Frontend} quanto no \textit{Backend}, unificando a linguagem em toda a aplicação.
+
+Entre suas características mais marcantes está o modelo não bloqueante e assíncrono, o que o torna especialmente eficiente em aplicações que exigem grande quantidade de operações de entrada e saída, como sistemas de tempo real, \textit{APIs} e serviços de \textit{streaming}. Esse modelo permite que o servidor lide com múltiplas conexões simultaneamente sem comprometer o desempenho.
+
+Já o \textit{Express.js} é um framework minimalista desenvolvido sobre o \textit{Node.js}, com foco em simplificar a criação de aplicações \textit{web} e \textit{APIs}. Ele fornece uma estrutura mais organizada para lidar com rotas, requisições \textit{HTTP}, respostas e \textit{middlewares}, tornando o desenvolvimento mais ágil e menos complexo.
+
+O \textit{Express.js} adota uma arquitetura baseada em \textit{middlewares}, que são funções executadas em sequência para processar requisições e respostas. Essa abordagem possibilita a personalização de fluxos e facilita a inclusão de funcionalidades como autenticação, validação de dados e tratamento de erros. Assim, os desenvolvedores conseguem estruturar aplicações de maneira modular e escalável.
+
+Outro ponto importante é a vasta comunidade em torno de ambos. A quantidade de pacotes disponíveis no \textit{npm} (\textit{Node Package Manager}) permite ampliar rapidamente as funcionalidades das aplicações, agregando bibliotecas de autenticação, banco de dados, segurança, entre outras. Isso reduz o tempo de desenvolvimento e favorece a padronização.
+
+Em conjunto, \textit{Node.js} e \textit{Express.js} se consolidaram como uma das principais escolhas para o desenvolvimento de aplicações modernas baseadas em arquitetura cliente-servidor. Sua combinação oferece desempenho, flexibilidade e simplicidade, sendo amplamente utilizada em projetos de diferentes portes, desde protótipos até sistemas de larga escala.
+
+\paragraph{\textit{Postman}}
+
+Ferramenta muito utilizada por desenvolvedores de \textit{software} para testes, documentação e elaboração de \textit{APIs}. É uma aplicação \textit{desktop} que fornece uma interface simples e direta para realizar diversas tarefas relacionadas à construção de uma API.
+
+Através do \textit{Postman}, desenvolvedores podem enviar requisições \textit{HTTP} para \textit{APIs}, o que facilita a depuração e testes de um serviço \textit{web} pronto ou em construção. Ele fornece suporte aos métodos mais conhecidos, como \textit{GET}, \textit{POST}, \textit{PUT} e \textit{DELETE}, permitindo que o profissional simule diferentes tipos de interação com a \textit{API}.
+
+Ademais, é uma ferramenta muito versátil para a documentação de \textit{APIs}. Desenvolvedores conseguem facilmente criar coleções de requisições, adicionar descrições, salvar exemplos de testes e compartilhar de maneira prática essas informações com colegas de equipe ou com a comunidade de profissionais da área em geral.
+
+Outra funcionalidade do \textit{Postman} é a possibilidade de automatizar tarefas repetitivas através de \textit{scripts}. Os profissionais podem elaborar diferentes \textit{scripts} utilizando \textit{JavaScript} propriamente para pré-processar requisições, extrair informações de respostas e realizar validações automaticamente, tornando etapas de testes mais práticas, eficientes e confiáveis.
+
+Por fim, a ferramenta \textit{Postman} se torna essencial para desenvolvedores profissionais que trabalham com a elaboração, construção e/ou manutenção de \textit{APIs}, pois oferece uma maneira simples e eficiente para testar, documentar e colaborar em serviços \textit{web}. Com sua interface amistosa, recursos para automação e praticidade na colaboração, tornam esta ferramenta uma escolha comum entre equipes de desenvolvedores em diversos lugares.
+
+\paragraph{\textit{React}}
+
+Uma biblioteca \textit{JavaScript} de código aberto (\textit{open source}), criada pelo \textit{Facebook} em 2013, com o objetivo de facilitar o desenvolvimento de interfaces de usuário interativas e dinâmicas. Desde seu lançamento, o \textit{React} se consolidou como uma das ferramentas mais populares no ecossistema de desenvolvimento \textit{web}, sendo amplamente adotado por empresas e desenvolvedores em todo o mundo.
+
+Sua principal característica é a utilização do conceito de componentes reutilizáveis, que permitem estruturar aplicações em pequenas partes independentes. Essa abordagem torna o desenvolvimento mais modular, organizado e de fácil manutenção, além de favorecer a reutilização de código em diferentes partes da aplicação.
+
+Outro diferencial importante do \textit{React} é o uso do \textit{Virtual DOM} (\textit{Document Object Model virtual}). Esse mecanismo cria uma representação virtual da interface, atualizando apenas os elementos que realmente sofrem alterações. Dessa forma, o \textit{React} reduz a quantidade de manipulações diretas no \textit{DOM} real, resultando em um desempenho superior e em uma experiência de usuário mais fluida.
+
+O \textit{React} também adota uma abordagem declarativa, onde o desenvolvedor descreve o estado desejado da interface e a biblioteca se encarrega de atualizá-la de acordo com as mudanças nos dados. Esse paradigma facilita a compreensão do fluxo da aplicação e reduz a ocorrência de erros comuns em manipulações manuais da interface.
+
+Além disso, o \textit{React} possui um ecossistema rico e em constante expansão. Ferramentas complementares, como o \textit{React Router} para gerenciamento de rotas e o \textit{Redux} para controle de estados globais, ampliam suas capacidades e tornam a biblioteca adequada para projetos de diferentes portes, desde aplicações simples até sistemas de grande escala.
+
+Por fim, a ampla comunidade ativa, a documentação detalhada e a adoção por grandes empresas tornam o \textit{React} uma das escolhas mais seguras e eficientes para o desenvolvimento \textit{Frontend} moderno. Sua flexibilidade, aliada à performance e ao suporte contínuo da comunidade, o consolidam como uma tecnologia essencial para a construção de interfaces ricas e responsivas.
+
+\paragraph{\textit{PostgreSQL}}
+
+Trata-se de um sistema de gerenciamento de banco de dados relacional (SGBDR) de código aberto, reconhecido pela sua robustez, escalabilidade e aderência aos padrões SQL. Ele foi desenvolvido inicialmente no final da década de 1980 e, desde então, evoluiu para se tornar uma das soluções mais utilizadas tanto no meio acadêmico quanto no mercado. Sua natureza \textit{open source} permite que a comunidade contribua constantemente com melhorias, correções e novas funcionalidades.
+
+Um dos diferenciais do \textit{PostgreSQL} é o seu forte suporte à conformidade com os padrões SQL, aliado a extensões que oferecem funcionalidades avançadas, como suporte a dados \textit{JSON}, \textit{XML} e até mesmo dados geoespaciais por meio da extensão \textit{PostGIS}. Essa flexibilidade possibilita que o sistema seja utilizado em diferentes cenários, desde aplicações tradicionais até soluções modernas que exigem manipulação de dados semiestruturados.
+
+Além disso, o \textit{PostgreSQL} é conhecido pela sua confiabilidade e integridade dos dados. Ele oferece recursos como controle de concorrência multiversão (\textit{MVCC}), que garante transações consistentes mesmo em ambientes com múltiplos acessos simultâneos. Outros mecanismos importantes incluem suporte a transações ACID (Atomicidade, Consistência, Isolamento e Durabilidade) e a implementação robusta de \textit{backup} e recuperação, essenciais para ambientes críticos.
+
+Outro ponto relevante é a extensibilidade do \textit{PostgreSQL}. O sistema permite a criação de novos tipos de dados, operadores, funções e linguagens de programação, adaptando-se às necessidades específicas de cada aplicação. Essa característica o torna não apenas um banco de dados relacional, mas também uma plataforma versátil capaz de se moldar a diferentes domínios de aplicação.
+
+Ele também se destaca em termos de desempenho e escalabilidade. É capaz de lidar com grandes volumes de dados e múltiplas conexões simultâneas sem perda significativa de eficiência. Além disso, conta com recursos como particionamento de tabelas, paralelização de consultas e otimização de índices, que contribuem para um processamento mais rápido e eficiente.
+
+Por fim, a ampla adoção do \textit{PostgreSQL} no mercado deve-se também à sua compatibilidade com diferentes sistemas operacionais, como \textit{Linux}, \textit{Windows} e \textit{macOS}, bem como à sua integração com diversas linguagens de programação e \textit{frameworks}. Essa versatilidade, somada à segurança, desempenho e constante evolução, o consolida como uma das principais opções para o desenvolvimento de sistemas modernos que demandam um gerenciamento eficiente e confiável de dados.
+
+\subsubsection{Tendências Atuais}
+
+Lorem ipslum.
+
+\subsection{IA Generativa (aplicada ao desenvolvimento de \textit{software})}
+
+Lorem ipslum.
+
+\section{Trabalhos Relacionados}
+
+Para fins de melhor localizar os trabalhos com temáticas relacionadas para o presente estudo, foi utilizado a plataforma de busca especializada em literatura acadêmica e científica Google Scholar. Os procedimentos de pesquisa e seleção consistiram em utilizar palavras chaves em português como “inteligência artificial generativa”, “desenvolvimento de software”, “produtividade”, “suporte”, “otimização” e “performance”, variando também os termos em inglês. Por fim, para selecionar os trabalhos a seguir, foi considerado o contexto do estudo de cada autor, conceitos abordados, tecnologias mencionadas e/ou utilizadas e problemáticas ressaltadas, que melhor correlacionassem com o presente estudo.
+
+\subsection{Trabalhos Acadêmicos}
+
+Dado o contexto do aprimoramento e evolução de Inteligências Artificiais Generativas nos anos recentes, tal como suas aplicabilidades para otimização de tarefas voltadas para a área de desenvolvimento de software, diversos estudos têm sido realizados com o intuito de explorar ainda mais os conceitos técnicos e práticos. A seguir, são apresentados estudos e pesquisas relacionados ao tema, estabelecendo um paralelo com a temática abordada para este trabalho.
+
+\citeonline{gomes2023} apresenta uma análise comparativa de diferentes Inteligências Artificiais Generativas (IAs Generativas) aplicadas no desenvolvimento de software, mas particularmente focando em ferramentas auxiliares como \textit{GitHub Copilot}, \textit{Codeium}, \textit{Tabnine} e \textit{CodeGeeX}. Para fins práticos, seu trabalho focou em experimentos utilizando \textit{GitHub Copilot} e \textit{Codeium} para mensurar a eficiência das ferramentas.
+
+Como resultado, o \citeonline{gomes2023} aponta que ambas as tecnologias se mostram extremamente úteis no processo de otimização do desenvolvimento, produtividade e qualidade de códigos, com a escolha entre elas dependendo das necessidades particulares do projeto e das preferências do profissional. Entretanto, o destaque ficou para a ferramenta \textit{GitHub Copilot}, que apresentou uma leve vantagem, com uma capacidade superior de compreensão para construção de uma lógica de desenvolvimento mais coesa.
+
+Em \citeonline{daSilva2025}, é realizado o teste prático de viabilidade de desenvolvimento de uma aplicação \textit{web} de gerenciamento de sócios torcedores de um clube de futebol, utilizando IA Generativa como apoio na construção da aplicação. Ainda que, neste estudo tenha sido desenvolvido uma solução simples, utilizando tecnologias como \textit{JavaScript}, \textit{PHP}, \textit{HTML5} e entre outras, o trabalhou demonstrou que utilizar de inteligência artificial otimiza o processo de desenvolvimento, desde a geração de código, identificação de falhas e sugestões de melhores práticas para a construção de soluções.
+
+De acordo com os autores e os resultados obtidos \cite{daSilva2025}, a adoção de IA Generativa no processo de desenvolvimento contribui tanto para acelerar a produção, quanto para a qualidade e otimização da aplicação. Para o estudo em questão, os autores contaram com o suporte de modelos de IA Generativa como \textit{GPT-3.5} e \textit{Claude 1}.
+
+Em contrapartida, no trabalho de \citeonline{ferreira2023}, o autor aborda sobre a influência das IAs Generativas na área de desenvolvimento de software, com base em um estudo qualitativo, combinando cenários exploratórios e descritivos. Aqui, o autor menciona o uso de ferramentas como o \textit{ChatGPT}, \textit{Bard}, \textit{GitHub Copilot} para tratar sobre a temática de modelos baseados no conceito de Processamento de Linguagem Natural (PLN).
+
+Ao longo de seu estudo, \citeonline{ferreira2023} aborda questões como o impacto da Inteligência Artificial na programação, trazendo dados e referências, para dissertar sobre tópicos como os desafios e benefícios do uso de ferramentas de IA. Sobre os desafios, o autor menciona a questão da dependência do uso de IA, limitando assim o desenvolvimento de habilidades próprias por parte do programador e a substituição do desenvolvedor por IA, assunto fortemente debatido desde a evolução das IAs Generativas nos anos recentes. 
+
+\citeonline{santos2024} investigou a influência das ferramentas de IA Generativas, citando \textit{ChatGPT} e \textit{GitHub Copilot}, com foco no processo de ensino e aprendizagem das instituições de ensino superior na área de desenvolvimento de \textit{software}. O objetivo deste estudo consistiu em identificar oportunidades e desafios no uso destas tecnologias. Para isso, o autor realizou um comparativo com grupos de alunos iniciantes, estagiários no setor de tecnologia, alocando-os em um projeto simulado.
+
+Para tanto o autor \cite{santos2024} seguiu um delineamento \textit{crossover} 2x2 AB/BA, isto é, alternando os grupos entre o uso e não uso de IA. Após a coleta de dados, foi mensurado o conhecimento técnico dos grupos, tal como qualidade dos artefatos gerados, avaliação do produto desenvolvido e provas simuladas para testar o conhecimento adquirido. Aqui, o autor ressalta que os grupos que fizeram o uso de IA obtiveram melhores avaliações nos artefatos desenvolvidos, desde a documentação ao desenvolvimento de \textit{software} propriamente dito. Entretanto, a nível de conhecimento, não refletiu em avaliações melhores nas provas simuladas (notas de avaliações, propriamente).
+
+\citeonline{costa2024} explorou como o uso de IA Generativa pode otimizar e aprimorar o processo de desenvolvimento de \textit{software} no contexto empresarial. O autor conduziu uma extensa revisão bibliográfica com o intuito de identificar as ferramentas e metodologias mais atuais e eficazes no mercado. A partir de então, selecionou e implementou \textit{frameworks} como \textit{Spring Boot} para a construção de uma aplicação escalável em \textit{Java}, utilizando o \textit{ChatGPT} como ferramenta de suporte durante o processo.
+
+Ademais, o autor \cite{costa2024} fez o uso de ferramentas de teste e documentação de \textit{APIs}, tais como \textit{Postman} e até mesmo \textit{JUnit}, como \textit{framework} para validação de testes unitários. Em seu trabalho, o autor utilizou do uso da IA Generativa através de \textit{prompts} para criação de todos os requisitos, códigos e validações do seu projeto. Como resultado, ele evidenciou uma melhoria na eficiência tanto do desenvolvimento quanto da qualidade da aplicação entregue. Entretanto, ressaltou a importância de que, o conhecimento prévio para uso de IAs Generativas é fundamental, para que se torne possível o uso da mesma como ferramenta de apoio no processo de desenvolvimento de \textit{software}.
+
+Por fim, com base nos estudos analisados e considerando o crescimento acelerado das ferramentas de Inteligência Artificial Generativa na atualidade, evidencia-se que o profissional — independentemente da área de atuação — pode, e deve, tirar proveito dessas tecnologias para se manter em constante aprendizado e adaptado às novas realidades do mercado. Ou seja, não é necessário dominar todos os princípios técnicos por trás dessas ferramentas, mas sim saber utilizá-las estrategicamente, visando otimização, desempenho e melhores resultados.
+
+Dessa forma, a proposta deste estudo é analisar, com base em dados e indicadores, o quanto o uso da Inteligência Artificial Generativa pode contribuir, junto aos profissionais da área de desenvolvimento de \textit{software}, para a entrega de soluções mais ágeis. Para delimitar o foco principal do trabalho, o segmento analisado será o desenvolvimento de software, considerando o papel do desenvolvedor no cenário atual do mercado de trabalho.
+
+Com base no levantamento de todas as informações dos trabalhos relacionados ao tema, é possível agrupar as principais características de cada um deles para fins de comparação. Dada as informações levantadas, separa-se as características em quatro parâmetros, sendo eles:
+
+\begin{itemize}[leftmargin=1cm, itemsep=0.1em, topsep=0.1em]
+    \item  \textbf{Tema principal:} define qual foi o principal tema abordado ao longo do estudo;
+    \item \textbf{Metodologia aplicada:} define o modelo utilizado para o estudo em questão;
+    \item \textbf{Tecnologias/Inteligências Artificiais utilizadas:} se aplicável, define as ferramentas e/ou tecnologias utilizadas para fins de estudo, tal como o modelo de Inteligência Artificial utilizado ou analisado;
+    \item \textbf{Objetivo:} define o objetivo do modelo, ou seja, qual problemática o modelo buscou esclarecer ao seu decorrer.
+\end{itemize}
+
+A partir do resultado do levantamento de trabalhos relacionados, foi possível elaborar a Tabela \ref{tab:estudos}, onde mostra o conteúdo dos critérios apontados em cada estudo, por ordem de apresentação.
+
+\begin{table}[ht]
+    \caption{Comparativo entre os trabalhos relacionados}
+    \label{tab:estudos}
+    \centering%
+    \footnotesize
+    \begin{tabularx}{\textwidth}{lXXXX}
+        \toprule
+        \textbf{Autores} & \textbf{Tema} & \textbf{Metodologia} & \textbf{Tecnologias/IA} & \textbf{Objetivo}\\
+        \midrule
+        \citeonline{gomes2023} & Comparação de IAs no desenvolvimento de \textit{software} & Testes práticos comparativos & \textit{GitHub Copilot}, \textit{Codeium}, \textit{Tabine}, \textit{CodeGeeX} & Avaliar eficiência de ferramentas de IA no desenvolvimento \\
+        \midrule
+        \citeonline{daSilva2025} & Aplicação de IA criação de sistemas \textit{web} & Estudo de caso com experimento & \textit{JavaScript}, \textit{PHP}, \textit{HTML5}, \textit{GPT-3.5}, \textit{Claude 1} & Verificar ganho de produtividade com uso de IA \\
+        \midrule
+        \citeonline{ferreira2023} & Impacto da IA na programação & Estudo qualitativo exploratório & \textit{ChatGPT}, \textit{Bard}, \textit{GitHub Copilot} & Analisar benefícios e riscos do uso da IA \\
+        \midrule
+        \citeonline{santos2024} & IA no ensino de tecnologia & Experimento com grupos (\textit{crossover}) & \textit{ChatGPT}, \textit{GitHub Copilot} & Medir impacto da IA na aprendizagem e desempenho técnico \\
+        \midrule
+        \citeonline{costa2024} & Uso de IA Generativa no desenvolvimento de \textit{software} empresarial & Revisão bibliográfica com aplicação prática & \textit{Spring Boot}, \textit{Java}, \textit{ChatGPT}, \textit{Postman}, \textit{JUnit} & Otimizar e melhorar eficiência e qualidade no desenvolvimento de aplicações \\
+        \bottomrule
+    \end{tabularx}
+    \fonte{Elaborado pelo autor}
+\end{table}
+\FloatBarrier
+
+\section{Materiais e Métodos}
+
+Lorem ipslum.
+
+\section{Modelo Proposto}
+
+Lorem ipslum.
+
+\subsection{Visão Geral}
+
+Lorem ipslum.
+
+\subsection{Arquitetura e Tecnologias}
+
+Lorem ipslum.
+
+\subsection{Funcionalidades}
+
+Lorem ipslum.
+
+\subsection{Login e Cadastro}
+
+Lorem ipslum.
+
+\subsection{Menu e Tela Inicial}
+
+Lorem ipslum.
+
+\subsection{Navegação}
+
+Lorem ipslum.
+
+\section{Análise e Discussão dos Resultados}
+
+Lorem ipslum.
+
+\subsection{Coleta de Dados}
+
+Lorem ipslum.
+
+\subsection{Avaliação dos Resultados}
+
+Lorem ipslum.
+
+\section{Considerações Finais e Trabalhos Futuros}
+
+Lorem ipslum.
+
+\bibliography{references}
+
+\appendix
+\section{DIAGRAMA ER DO BANCO DE DADOS}
+
+Lorem ipslum.
+
+\section{TELAS DA APLICAÇÃO}
+
+Lorem ipslum.
+
+\section{TEXTO TEXTO}
+
+Lorem ipslum.
+
+\section{CENÁRIOS DE TESTES}
+
+Lorem ipslum.
+
+\section{TEXTO TEXTO}
+
+Lorem ipslum.
+
+\section{TEXTO TEXTO}
+
+Lorem ipslum.
+
+\section{RESPOSTAS DO QUESTIONÁRIO}
+
+Lorem ipslum.
+
+\section{REQUISITOS FUNCIONAIS DA APLICAÇÃO}
+
+Lorem ipslum.
+
+\section{TEXTO TEXTO}
+
+Lorem ipslum.
+
+\annex
+\section{NOME DO ANEXO}
+
+Lorem ipslum.
+
+\end{document}
