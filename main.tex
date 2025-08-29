@@ -212,11 +212,168 @@ A ampliação do papel dos desenvolvedores de \textit{software} evidencia a cres
 
 \subsubsection{Modelos de Desenvolvimento de \textit{Software}}
 
-Lorem ipslum.
+O desenvolvimento de \textit{software} pode ser conduzido por diferentes abordagens, conhecidas como modelos de processo de \textit{software}. Esses modelos têm como objetivo estruturar e organizar as atividades necessárias para transformar requisitos em um produto final de qualidade. Entre os modelos mais conhecidos estão o Modelo Cascata, o Modelo em V, o Modelo Espiral e os Modelos Ágeis.
+
+O Modelo Cascata (ou \textit{Waterfall}) foi um dos primeiros modelos formais de processo de software. Proposto por Winston Royce em 1970, consiste em uma sequência linear de fases: levantamento de requisitos, análise, projeto, implementação, testes, implantação e manutenção. Cada fase deve ser concluída antes do início da próxima, funcionando como uma “cascata” de atividades \cite{sommerville2011}. Entre suas vantagens podemos citar:
+
+\begin{itemize}[leftmargin=1cm, itemsep=0.1em, topsep=0.1em]
+    \item Estrutura simples e de fácil entendimento;
+    \item Definição clara das fases e entregas;
+    \item Útil em projetos com requisitos bem definidos e estáveis.
+\end{itemize}
+
+Por outro lado, há também desvantagens que valem ser destacadas deste modelo, sendo elas:
+
+\begin{itemize}[leftmargin=1cm, itemsep=0.1em, topsep=0.1em]
+    \item Pouca flexibilidade diante de mudanças nos requisitos;
+    \item Risco de identificação tardia de falhas, geralmente apenas na fase de testes;
+    \item Dificuldade em lidar com projetos complexos ou inovadores.
+\end{itemize}
+
+O Modelo em V é uma extensão do Modelo Cascata, mas com foco maior na validação e verificação em cada etapa do desenvolvimento. A representação em formato de “V” mostra que para cada fase de desenvolvimento existe uma fase correspondente de teste: requisitos são validados com testes de aceitação, projeto de sistema é validado com testes de integração, e assim sucessivamente \cite{pressman2016}. Entre suas principais vantagens, temos:
+
+\begin{itemize}[leftmargin=1cm, itemsep=0.1em, topsep=0.1em]
+    \item Ênfase na qualidade e no teste desde o início do processo;
+    \item Adequado para sistemas críticos, como os da área médica ou aeroespacial.
+\end{itemize}
+
+Já como desvantagens, temos:
+
+\begin{itemize}[leftmargin=1cm, itemsep=0.1em, topsep=0.1em]
+    \item Semelhante ao Cascata, é rígido e pouco adaptável a mudanças;
+    \item Elevado custo caso ocorra necessidade de alterações durante o desenvolvimento.
+\end{itemize}
+
+O Modelo Espiral, proposto por Barry Boehm em 1986, combina elementos do Modelo Cascata com técnicas de prototipação e gerenciamento de riscos. O desenvolvimento é representado como uma espiral, onde cada ciclo envolve: definição de objetivos, análise de riscos, desenvolvimento e validação, e planejamento da próxima iteração \cite{boehm1988}. Das vantagens deste modelo, ressaltam-se:
+
+\begin{itemize}[leftmargin=1cm, itemsep=0.1em, topsep=0.1em]
+    \item Forte ênfase na análise e mitigação de riscos;
+    \item Flexibilidade para incorporar mudanças ao longo do processo;
+    \item Permite versões incrementais do sistema.
+\end{itemize}
+
+E, como desvantagens temos:
+
+\begin{itemize}[leftmargin=1cm, itemsep=0.1em, topsep=0.1em]
+    \item Complexidade de gerenciamento maior do que em modelos lineares;
+    \item Custo elevado, especialmente em projetos pequenos;
+    \item Exige maior envolvimento de profissionais experientes em análise de riscos.
+\end{itemize}
+
+Os Modelos Ágeis surgiram como uma alternativa aos modelos tradicionais, sendo formalizados em 2001 com o Manifesto Ágil. Esses modelos priorizam colaboração com o cliente, entregas rápidas e contínuas, adaptação às mudanças e interações entre pessoas mais do que processos rígidos \cite{beck2001}.
+
+Entre os métodos ágeis mais utilizados, principalmente nos dias atuais, estão o \textit{Scrum}, o \textit{Kanban} e o \textit{Extreme Programming} (conhecido também como XP). Todos eles seguem o princípio de dividir o projeto em pequenos ciclos (iterações), resultando em entregas frequentes e incrementais do produto. Como as principais vantagens, podemos citar:
+
+\begin{itemize}[leftmargin=1cm, itemsep=0.1em, topsep=0.1em]
+    \item Alta flexibilidade para mudanças de requisitos;
+    \item Entregas rápidas que geram valor contínuo ao cliente;
+    \item Melhora na comunicação e na colaboração entre equipe e \textit{stakeholders}.
+\end{itemize}
+
+E, das suas principais desvantagens:
+
+\begin{itemize}[leftmargin=1cm, itemsep=0.1em, topsep=0.1em]
+    \item Pode gerar falta de documentação formal, dependendo da equipe;
+    \item Requer alto envolvimento do cliente no processo;
+    \item Menos indicado para projetos de missão crítica que demandam forte rastreabilidade.
+\end{itemize}
+
+Sendo assim, evidencia-se que cada modelo de desenvolvimento possui suas características, vantagens e limitações. A escolha do modelo mais adequado depende do contexto do projeto, da complexidade do sistema, do nível de risco, do grau de inovação e da estabilidade dos requisitos. Enquanto modelos tradicionais como Cascata e V são mais estruturados, os modelos Ágeis e o Espiral oferecem maior flexibilidade e adaptabilidade, características cada vez mais valorizadas no mercado atual. Na Tabela \ref{tab:modelosDev}, temos um comparativo resumido dos principais pontos dos modelos citados.
+
+\begin{table}[ht]
+    \caption{Comparativo entre Modelos de Desenvolvimento de \textit{Software}}
+    \label{tab:modelosDev}
+    \centering%
+    \footnotesize
+    \begin{tabularx}{\textwidth}{lXXXX}
+        \toprule
+        \textbf{Modelo} & \textbf{Resumo} & \textbf{Vantagem} & \textbf{Desvantagem} & \textbf{Indicado para}\\
+        \midrule
+        Cascata & Linear e sequencial & Simples e claro & Pouca flexibilidade & Projetos pequenos e estáveis \\
+        \midrule
+        V & Cascata com foco em testes & Alta qualidade & Rídigo a mudanças & Sistemas críticos \\
+        \midrule
+        Espiral & Iterativo com análise de riscos & Flexível e seguro & Complexo e custo alto & Projetos grandes e arriscados \\
+        \midrule
+        Ágeis & Iterativo e adaptável & Entregas rápidas & Pouca documentação & Projetos dinâmicos e mutáveis \\
+        \bottomrule
+    \end{tabularx}
+    \fonte{Elaborado pelo autor}
+\end{table}
+\FloatBarrier
 
 \subsubsection{Etapas do Processo de \textit{Software}}
 
-Lorem ipslum.
+Segundo \citeonline{osterweil2011}, o desenvolvimento de um programa ou \textit{software} voltado a atender às demandas de um cliente ou alcançar um propósito específico representa apenas um dos diversos resultados derivados de uma sequência de processos e atividades. Nesse cenário, \citeonline{daSilva2020} ressalta que os principais objetivos desse processo envolvem ampliar a compreensão sobre o tema tratado, criar meios eficientes de comunicação entre os envolvidos no projeto, assegurar a manutenção do sistema e coletar o retorno dos usuários. Dessa forma, destacam-se como metas centrais:
+
+\begin{itemize}[leftmargin=1cm, itemsep=0.1em, topsep=0.1em]
+    \item Dispor de um guia que indique as tarefas a serem realizadas e as necessidades do cliente;
+    \item Estimar os custos de desenvolvimento;
+    \item Garantir padrões de qualidade;
+    \item Projetar o tempo necessário para a execução.
+\end{itemize}
+
+Dessa forma, o processo de criação de \textit{software} corresponde ao conjunto de métodos aplicados para elaborar programas de computador, independentemente de sua finalidade. Os modelos de desenvolvimento podem apresentar grande nível de detalhamento e complexidade, em razão da variedade de aplicações existentes, que vão desde jogos até editores de texto e ferramentas de \textit{design}. Essas práticas envolvem não apenas os elementos técnicos necessários para o desenvolvimento, mas também a organização das equipes e a condução das diferentes fases do projeto.
+
+Segundo \citeonline{goes2022}, mesmo que os aplicativos apresentem diferentes níveis de complexidade, a adoção de um processo de desenvolvimento é benéfica, pois aumenta as chances de êxito. Atualmente, coexistem métodos ainda em uso e outros já considerados obsoletos. Ao longo do projeto, partes da programação são concluídas progressivamente, com iterações intermediárias que incluem testes e validações constantes. Assim, grande parte das atividades de implementação e testes já se encontra avançada antes mesmo do término do processo, exigindo atenção contínua à gestão em todas as fases.
+
+Esse modelo difere do processo em cascata, no qual as etapas seguem rigidamente em sequência. Em vez disso, cada iteração pode resultar em entregas parciais, permitindo que os clientes acompanhem o progresso e avaliem se os objetivos estão sendo alcançados. Isso favorece ajustes mais ágeis em cronograma e orçamento, além de facilitar a definição dos próximos passos.
+
+Para \citeonline{osterweil2011}, um modelo de processo de \textit{software} consiste em adaptar estruturas já existentes a fim de simplificar a complexidade do desenvolvimento. Nesse contexto, o trabalho é dividido em períodos com escopo bem definido, sustentados por práticas de gerenciamento de projeto e controle de qualidade. Assim, o desenvolvimento pode seguir modelos aplicados de forma única, como o cascata, ou de modo iterativo, como o espiral, frequentemente com ajustes específicos conforme a necessidade.
+
+O processo de desenvolvimento de \textit{software} ocorre de forma iterativa, permitindo o aprimoramento contínuo dos elementos do programa. De modo geral, envolve dois grandes conjuntos de atividades: a implementação (\textit{design} e programação) e a análise dos processos de negócio (modelos de processos e de dados). Segundo \citeonline{medeiros2019}, a agilidade no desenvolvimento busca dar mais autonomia criativa aos desenvolvedores, reduzindo inicialmente a carga administrativa. Nesse cenário, surgem também abordagens alternativas, como a aplicação universal e a fábrica de \textit{software}, que adaptam soluções pré-existentes às necessidades específicas de cada projeto.
+
+De acordo com \citeonline{daSilva2020}, os modelos de processo podem ser organizados em três tipos. O primeiro acompanha o desenvolvimento desde a concepção até a utilização em tempo real, incluindo as modificações necessárias após sua implantação. O segundo, conforme \citeonline{osterweil2011}, estende-se ao ciclo de vida completo do \textit{software}, abrangendo tanto os requisitos técnicos quanto a padronização e certificação das etapas. Já o terceiro se relaciona à visão do programador, valorizando métodos mais procedurais que podem facilitar ou dificultar a fluidez do processo, a depender da estratégia adotada.
+
+Para reduzir riscos de atraso e de custos acima do previsto, é fundamental contar com uma arquitetura de \textit{software} bem definida antes do início do desenvolvimento. Essa arquitetura orienta o planejamento e a organização do sistema, delimitando o ambiente de execução, os componentes a serem integrados e as restrições estruturais ou funcionais que precisam ser consideradas.
+
+Segundo \citeonline{chaves2020}, mesmo em um cenário com arquitetura de \textit{software} bem definida, a fase de desenvolvimento pode trazer desafios significativos e problemas imprevistos para a equipe. Como a escolha da metodologia depende do objetivo do produto, não existe um método universalmente superior. Projetos simples e com prazos curtos podem se beneficiar da abordagem em cascata, que reduz custos e tempo de entrega, garantindo maior previsibilidade.
+
+Por outro lado, \citeonline{wiegers2013} ressaltam que projetos mais complexos demandam métodos iterativos, já que o modelo cascata pode atrasar a identificação de falhas ou requisitos mal definidos, resultando em clientes insatisfeitos ou até em falhas graves. A abordagem iterativa permite ajustes ao longo do desenvolvimento, oferecendo maior flexibilidade e capacidade de adaptação a mudanças, conforme também destacado por \citeonline{osterweil2011}.
+
+Na prática, empresas de \textit{software} adotam diferentes abordagens de acordo com suas necessidades e exigências de mercado. Em alguns casos, como no setor de defesa dos Estados Unidos, a aplicação está vinculada a certificações específicas, como a ISO 12207, que regula o ciclo de vida do \textit{software}. Além disso, ao longo do tempo, pesquisadores têm buscado métodos repetitivos e previsíveis que aumentem a produtividade e a qualidade, seja por meio da padronização das atividades ou pela adoção de práticas de gestão de projetos.
+
+\citeonline{daSilva2020} destaca que a falta de uma gestão de projetos eficiente pode levar a atrasos e aumento de custos no desenvolvimento de \textit{software}, além de comprometer a entrega em termos de funcionalidade e prazo. Por isso, o gerenciamento eficaz é indispensável. Nesse contexto, a definição de requisitos tem papel central: muitas vezes os clientes possuem apenas uma ideia geral do produto, sem clareza sobre seus objetivos, o que exige uma análise detalhada do escopo e a elaboração da especificação funcional.
+
+O processo se inicia com a fase de planejamento, em que programadores, analistas de mercado, especialistas em \textit{marketing} e clientes colaboram para definir as funcionalidades e os critérios de qualidade, além de avaliar riscos. Na sequência, ocorre a implementação, momento em que os desenvolvedores produzem o código-fonte e realizam testes de caixa preta e caixa branca para identificar falhas o quanto antes.
+
+Outro aspecto essencial é a escolha da arquitetura de \textit{software}, geralmente definida ainda no planejamento. Ela estabelece a estrutura do sistema, as interações entre componentes e as diretrizes de evolução, influenciando diretamente fatores como:
+
+\begin{itemize}[leftmargin=1cm, itemsep=0.1em, topsep=0.1em]
+    \item Escalabilidade: capacidade do sistema crescer e lidar com maior carga de usuários;
+    \item Manutenção: facilidade de incluir novas funcionalidades e corrigir falhas;
+    \item Desempenho: eficiência em tempo de resposta e uso de recursos;
+    \item Segurança: proteção de dados e resistência a ataques;
+    \item Reusabilidade: aproveitamento de componentes em futuros projetos, economizando tempo e esforço.
+\end{itemize}
+
+Entre os diferentes modelos de arquitetura de \textit{software}, destaca-se a Arquitetura Hexagonal (ou de Portas e Adaptadores), proposta por Alistair Cockburn. Seu princípio central é manter a lógica do sistema independente de elementos externos, como banco de dados, \textit{frameworks} e interfaces. Essa separação favorece manutenção, testes e flexibilidade. Seus principais componentes são:
+
+\begin{itemize}[leftmargin=1cm, itemsep=0.1em, topsep=0.1em]
+    \item Domínio central: reúne a lógica de negócios essencial, independente de tecnologias externas;
+    \item Portas: definem a comunicação entre o domínio e o exterior;
+    \begin{itemize}[leftmargin=1.2cm, itemsep=0.1em, topsep=0.1em]
+        \item Portas de entrada: permitem que adaptadores de entrada (ex.: serviços, controladores) acessem a lógica de negócios;
+        \item Portas de saída: usadas pela lógica de negócios para interagir com sistemas externos (ex.: repositórios, \textit{gateways});
+    \end{itemize}
+    \item Adaptadores: implementações que conectam portas a sistemas externos;
+    \begin{itemize}[leftmargin=1.2cm, itemsep=0.1em, topsep=0.1em] 
+        \item Adaptadores de entrada: ligam o mundo externo ao domínio (ex.: \textit{APIs REST}, interfaces gráficas);
+        \item Adaptadores de saída: conectam o domínio a serviços externos (ex.: bancos de dados, mensageria).
+    \end{itemize}
+\end{itemize}
+
+Essa arquitetura se destaca por facilitar testes isolados da lógica de negócios, sem dependência de fatores externos.
+
+Além disso, as \textit{APIs} (Interfaces de Programação de Aplicações) desempenham papel essencial na integração de sistemas, pois definem protocolos e formatos de comunicação padronizados. Aplicações modernas dependem fortemente delas para garantir interoperabilidade e escalabilidade. Um modelo bastante difundido é o \textit{REST} (\textit{Representational State Transfer}), um estilo arquitetural para serviços web que utiliza os métodos \textit{HTTP}. Seus princípios incluem:
+
+\begin{itemize}[leftmargin=1cm, itemsep=0.1em, topsep=0.1em]
+    \item Recursos: cada elemento é tratado como um recurso identificado por um \textit{URI};
+    \item Métodos \textit{HTTP}: uso de \textit{GET}, \textit{POST}, \textit{PUT} e \textit{DELETE} para operações \textit{CRUD};
+    \item Representações: recursos descritos em formatos como \textit{JSON} ou \textit{XML};
+    \item \textit{Stateless}: cada requisição contém todas as informações necessárias, sem depender de estado prévio;
+    \item Cacheabilidade: respostas podem ser cacheadas para maior eficiência.
+\end{itemize}
 
 \subsubsection{Ferramentas e Tecnologias}
 
@@ -226,8 +383,8 @@ Elas vão desde Ambientes de Desenvolvimento Integrado (\textit{Integrated Devel
 
 Para o projeto deste trabalho, a escolha das ferramentas/tecnologias \textit{Node.js}, \textit{Express.js}, \textit{Postman}, \textit{React} e \textit{PostgreSQL} foi baseada em suas funcionalidades robustas, porém simples de serem implementadas, o que permite o desenvolvimento de aplicações bem estruturadas com um baixo nível de complexidade.
 
-\setcounter{secnumdepth}{4} % Permite numeração até paragraph
-\setcounter{tocdepth}{4}    % Inclui no sumário
+%\setcounter{secnumdepth}{4} % Permite numeração até paragraph
+%\setcounter{tocdepth}{4}    % Inclui no sumário
 
 \paragraph{\textit{Node.js} e \textit{Express.js}}
 
@@ -285,9 +442,19 @@ Por fim, a ampla adoção do \textit{PostgreSQL} no mercado deve-se também à s
 
 \subsubsection{Tendências Atuais}
 
-Lorem ipslum.
+É notável como o desenvolvimento de \textit{software} tem evoluído de maneira acelerada, impulsionado pela necessidade de maior qualidade, rapidez e flexibilidade na entrega de soluções. Entre as principais tendências observadas atualmente estão a integração e entrega contínua (\textit{CI/CD}), a cultura \textit{DevOps}, a automação de testes, o uso da computação em nuvem e a incorporação de técnicas de Inteligência Artificial no processo de desenvolvimento.
 
-\subsection{IA Generativa (aplicada ao desenvolvimento de \textit{software})}
+A integração contínua (\textit{Continuous Integration} ou \textit{CI}) e a entrega contínua (\textit{Continuous Delivery/Deployment} ou \textit{CD}) tornaram-se práticas fundamentais para aumentar a agilidade no desenvolvimento. A integração contínua consiste em integrar o código desenvolvido por diferentes membros da equipe em um repositório central de forma frequente, garantindo que problemas sejam identificados rapidamente. Já a entrega contínua busca automatizar o processo de disponibilização do \textit{software} em ambientes de homologação e produção, reduzindo o tempo entre a implementação e a entrega final ao cliente. Essa abordagem melhora a qualidade e reduz riscos, uma vez que as alterações são entregues em pequenos lotes, facilitando a detecção de falhas \cite{fowler2006}.
+
+Nesse mesmo contexto, surge a cultura \textit{DevOps}, que busca aproximar as áreas de desenvolvimento (\textit{Dev}) e operações (\textit{Ops}), promovendo colaboração, automação e monitoramento contínuo em todo o ciclo de vida do \textit{software}. O \textit{DevOps} propõe quebrar silos organizacionais, incentivando a responsabilidade compartilhada pelo produto final. Isso resulta em maior velocidade de entrega, confiabilidade das aplicações e capacidade de resposta a mudanças e incidentes. Empresas que adotam \textit{DevOps} relatam ganhos significativos em termos de escalabilidade e inovação \cite{kim2016}.
+
+Outro aspecto essencial das práticas modernas é a automação de testes. Com a crescente complexidade dos sistemas, os testes manuais isolados tornam-se insuficientes para garantir qualidade. A automação permite executar conjuntos de testes de maneira repetitiva, rápida e confiável, cobrindo desde testes unitários até testes de integração e regressão. Além de reduzir o tempo e custo da verificação, os testes automatizados aumentam a confiança no processo de entrega contínua, já que cada alteração pode ser validada em questão de minutos \cite{fewster1999}.
+
+O avanço da computação em nuvem também representa um marco para o desenvolvimento de \textit{software} contemporâneo. Plataformas como \textit{Amazon Web Services} (\textit{AWS}), \textit{Microsoft Azure} e \textit{Google Cloud} oferecem infraestrutura escalável, serviços gerenciados e ferramentas de integração que permitem às empresas reduzir custos e aumentar a eficiência. A nuvem facilita a adoção de arquiteturas modernas, como microsserviços e contêineres, além de apoiar práticas como \textit{DevOps} e \textit{CI/CD}. Com isso, organizações conseguem implantar soluções globalmente com maior rapidez e flexibilidade \cite{armstrong2019}.
+
+Por fim, observa-se o crescente uso da Inteligência Artificial (IA) como apoio ao desenvolvimento de \textit{software}. Ferramentas baseadas em IA vêm sendo aplicadas para sugerir trechos de código, detectar vulnerabilidades de segurança, prever falhas e até auxiliar no \textit{design} de arquiteturas. Embora ainda seja um campo em evolução, a integração da IA no ciclo de vida do desenvolvimento aponta para ganhos de produtividade e qualidade. Contudo, devido à sua relevância e complexidade, esse tema será abordado em maior profundidade na seção seguinte deste trabalho.
+
+\subsection{IA Generativa aplicada ao desenvolvimento de \textit{software}}
 
 Lorem ipslum.
 
