@@ -132,17 +132,18 @@ Por outro lado, pesquisas recentes indicam que a adoção de IA no desenvolvimen
 
 Diante desse cenário, torna-se essencial investigar como a IA generativa influencia o desempenho de desenvolvedores. Este trabalho propõe um estudo comparativo entre dois grupos de participantes: um com acesso a ferramentas de IA Generativa e outro sem acesso a esses recursos, aplicando um desafio técnico de programação. O objetivo é avaliar variáveis como eficiência, tempo de resolução e capacidade para solucionar os problemas propostos, fornecendo uma investigação sobre vantagens e limitações do uso dessas tecnologias.
 
-Assim, o objetivo geral desta pesquisa é analisar o uso de ferramentas de IA Generativa no Desenvolvimento de \textit{Software} por meio de um desafio técnico comparativo entre desenvolvedores com e sem acesso a essas ferramentas. A questão de pesquisa que orienta este estudo é: de que maneira o uso de ferramentas de IA Generativa contribui ou afeta o desempenho de desenvolvedores em atividades práticas de programação? Espera-se que os resultados forneçam evidências consistentes para compreender o papel da IA como aliada no processo de desenvolvimento de \textit{software}, oferencedo resultados para pesquisadores, profissionais e instituições interessadas em compreender e orientar o uso dessas ferramentas emergentes.
+Assim, o objetivo geral desta pesquisa é analisar o uso de ferramentas de IA Generativa no Desenvolvimento de \textit{Software} por meio de um desafio técnico comparativo entre desenvolvedores com e sem acesso a essas ferramentas. A questão de pesquisa que orienta este estudo é: de que maneira o uso de ferramentas de IA Generativa contribui ou afeta o desempenho de desenvolvedores em atividades práticas de programação? Destacam-se também os objetivos específicos necessários para atingir a conclusão deste trabalho, sendo eles:
 
-\subsection{Objetivos Específicos}
-
-Abaixo, destacam-se os objetivos específicos necessários para atingir a conclusão deste trabalho:
 \begin{enumerate}[label=\alph*), leftmargin=1.2cm, itemsep=0.1em, topsep=0.1em]
     \item desenvolver uma plataforma \textit{web} simples para disponibilização do desafio técnico e coleta de dados de desempenho dos participantes;
     \item aplicar o desafio técnico a dois grupos de desenvolvedores, sendo um autorizado a utilizar ferramentas de IA e outro restrito ao uso dessas tecnologias;
     \item comparar os resultados obtidos pelos grupos em relação ao tempo de conclusão, qualidade do código entregue e abordagem adotada na resolução do problema;
     \item analisar as vantagens, limitações e possíveis implicações do uso de ferramentas de IA no processo de desenvolvimento de \textit{software}.
 \end{enumerate}
+
+As seções seguintes deste documento estão dispostas da seguinte forma: a segunda seção contempla a fundamentação teórica do trabalho, que discorre sobre o desenvolvimento de \textit{software} e IA Generativa aplicada ao desenvolvimento de \textit{software} propriamente. A terceira seção apresenta os trabalhos relacionados a esta pesquisa e uma breve comparação entre os mesmos. Na quarta seção apresenta-se a metodologia do trabalho, descrevendo como foi conduzida todas as etapas e elaborações da pesquisa. Na quinta seção está a proposta de modelo do trabalho, apresentando brevemente a arquitetura da plataforma, tecnologias utilizadas e seu fluxo de uso do lado dos participantes. Na sexta seção apresenta-se os resultados e discussões após coleta de dados por meio do experimento aplicado como um todo.
+
+Por fim, ao fechamento do trabalho na última seção, encontra-se as conclusões e considerações finais levantadas com o experimento, assim como apontamentos para trabalhos futuros. Espera-se que os resultados forneçam evidências consistentes para compreender o papel da IA como aliada no processo de desenvolvimento de \textit{software}, oferencedo resultados para pesquisadores, profissionais e instituições interessadas em compreender e orientar o uso dessas ferramentas emergentes.
 
 \section{Fundamentação Teórica}
 
@@ -194,9 +195,9 @@ A ampliação do papel dos desenvolvedores de \textit{software} evidencia a cres
 
 \subsubsection{Modelos de Desenvolvimento de \textit{Software}}
 
-O desenvolvimento de \textit{software} pode ser conduzido por diferentes abordagens, conhecidas como modelos de processo de \textit{software}. Esses modelos têm como objetivo estruturar e organizar as atividades necessárias para transformar requisitos em um produto final de qualidade. Existem diversos modelos conhecidos, mas para fins de exemplificar os dois mais conhecidos, podemos citar o Modelo Cascata e os Modelos Ágeis.
+O desenvolvimento de \textit{software} pode ser conduzido por diferentes abordagens, conhecidas como modelos de processo de \textit{software}. Esses modelos têm como objetivo estruturar e organizar as atividades necessárias para transformar requisitos em um produto final de qualidade. Existem diversos modelos conhecidos, entretanto, os mais populares e utilizados acabam sendo o Modelo Cascata e os Modelos Ágeis.
 
-O Modelo Cascata (ou \textit{Waterfall}) foi um dos primeiros modelos formais de processo de software. Proposto por Winston Royce em 1970, consiste em uma sequência linear de fases: levantamento de requisitos, análise, projeto, implementação, testes, implantação e manutenção. Cada fase deve ser concluída antes do início da próxima, funcionando como uma “cascata” de atividades \cite{sommerville2011}. Entre suas vantagens podemos citar:
+O Modelo Cascata (ou \textit{Waterfall}) foi um dos primeiros modelos formais de processo de \textit{software}. Proposto por Winston Royce em 1970, consiste em uma sequência linear de fases: levantamento de requisitos, análise, projeto, implementação, testes, implantação e manutenção. Cada fase deve ser concluída antes do início da próxima, funcionando como uma “cascata” de atividades \cite{sommerville2011}. Entre suas vantagens podemos citar:
 
 \begin{itemize}[leftmargin=1cm, itemsep=0.1em, topsep=0.1em]
     \item Estrutura simples e de fácil entendimento;
@@ -252,7 +253,7 @@ Sendo assim, evidencia-se que cada modelo de desenvolvimento possui suas caracte
 
 \subsection{IA Generativa (aplicada ao desenvolvimento de \textit{software})}
 
-A Inteligência Artificial (IA) consolidou-se como uma das áreas mais relevantes da Ciência da Computação, devido à sua capacidade de simular processos cognitivos humanos como aprendizagem, raciocínio e tomada de decisão por meio de algoritmos e modelos matemáticos (CÂNDIDO, 2022; AGUIAR, 2023). Nos últimos anos, a evolução tecnológica permitiu que esses sistemas ultrapassassem o campo do reconhecimento de padrões e da automação, alcançando um estágio em que são capazes de gerar novos conteúdos, fenômeno que deu origem ao conceito de Inteligência Artificial Generativa. Segundo Uniphore (2024), a IA Generativa refere-se ao ramo da IA que cria resultados originais — textos, imagens, sons ou códigos — a partir de grandes volumes de dados já existentes, distinguindo-se de modelos meramente classificatórios ou preditivos. Conforme aponta TechTarget (2024), esse processo ocorre por meio da análise de padrões e estruturas aprendidas, sendo ativado a partir de instruções em linguagem natural, conhecidas como prompts.
+A Inteligência Artificial (IA) consolidou-se como uma das áreas mais relevantes da Ciência da Computação, devido à sua capacidade de simular processos cognitivos humanos como aprendizagem, raciocínio e tomada de decisão por meio de algoritmos e modelos matemáticos (CÂNDIDO, 2022; AGUIAR, 2023). Nos últimos anos, a evolução tecnológica permitiu que esses sistemas ultrapassassem o campo do reconhecimento de padrões e da automação, alcançando um estágio em que são capazes de gerar novos conteúdos, fenômeno que deu origem ao conceito de Inteligência Artificial Generativa. Segundo Uniphore (2024), a IA Generativa refere-se ao ramo da IA que cria resultados originais sejam eles textos, imagens, sons ou códigos, a partir de grandes volumes de dados já existentes, distinguindo-se de modelos meramente classificatórios ou preditivos. Conforme aponta TechTarget (2024), esse processo ocorre por meio da análise de padrões e estruturas aprendidas, sendo ativado a partir de instruções em linguagem natural, conhecidas como prompts.
 
 No campo do desenvolvimento de software, a IA Generativa tem desempenhado papel crescente ao possibilitar a geração automática de trechos de código, documentação, testes e até refatoração de programas. Idrisov e Schlippe (2024) compararam códigos produzidos por ferramentas de IA e por programadores humanos, identificando que, embora as soluções geradas automaticamente sejam satisfatórias em tarefas de baixa complexidade, ainda apresentam limitações em contextos que exigem maior profundidade técnica ou conhecimento de domínio. Em estudo semelhante, Yu (2025) observou que assistentes de codificação generativa, como Codeium e ferramentas similares, aumentam a produtividade em atividades repetitivas, mas enfrentam dificuldades quando aplicados a tarefas que demandam compreensão arquitetural ou integração com sistemas legados.
 
@@ -335,7 +336,7 @@ Sendo assim, para atingir os objetivos, a pesquisa percorreu cinco fases. A prim
 
 Na segunda fase, definiu-se as tecnologias, bem como a arquitetura da aplicação \textit{web} proposta para o desenvolvimento do trabalho. Com isso, estabelece-se o alicerce para o desenvolvimento da solução e para o cumprimento dos objetivos do trabalho.
 
-A terceira fase consistiu no desenvolvimento da aplicação \textit{web} que foi utilizada como ambiente de execução do desafio técnico. O objetivo central da ferramenta foi de disponibilizar, de forma prática e organizada, o enunciado do desafio, permitindo que os participantes iniciassem a atividade e, ao final, submetessem suas soluções. Além disso, a aplicação foi responsável por registrar automaticamente o tempo total despendido por cada participante, desde o momento em que iniciou a tarefa até a finalização do envio, viabilizando a coleta de dados confiáveis para a análise posterior.
+A terceira fase consistiu no desenvolvimento da aplicação \textit{web} que foi utilizada como ambiente de execução do desafio técnico, assim como a elaboração do desafio disponibilizado dentro da plataforma. O objetivo central da ferramenta foi de oferecer, de forma prática e organizada, o enunciado do desafio, permitindo que os participantes iniciassem a atividade e, ao final, submetessem suas soluções. Além disso, a aplicação foi responsável por registrar automaticamente o tempo total despendido por cada participante, desde o momento em que iniciou a tarefa até a finalização do envio, viabilizando a coleta de dados confiáveis para a análise posterior.
 
 A quarta fase compreendeu a aplicação prática do modelo e a coleta de dados. Para tanto, foram selecionados participantes por conveniência, ou seja, profissionais de desenvolvimento de \textit{software} previamente conhecidos pelo pesquisador e que se dispuseram a colaborar com o estudo. Após a seleção, os desenvolvedores foram distribuídos de forma aleatória em dois grupos: um com autorização para utilizar ferramentas de IA e outro restrito ao desenvolvimento sem esses recursos. Essa etapa tem como propósito garantir condições controladas para comparar os desempenhos e mensurar a utilização da IA nos resultados obtidos.
 
@@ -355,13 +356,13 @@ Após a coleta dos resultados, a quinta e última fase consistiu na apresentaç�
 
 \subsection{Proposta de Solução}
 
-Atualmente, observa-se que o impacto da Inteligência Artificial no desenvolvimento de \textit{software} ainda é um tema em debate, sendo comum que as análises existentes se restrinjam a relatos de uso ou percepções subjetivas por parte dos desenvolvedores. Em muitos casos, a avaliação da influência da IA sobre fatores como produtividade e tempo de execução de tarefas ocorre de forma fragmentada, sem um método padronizado que permita mensurar de maneira objetiva os efeitos reais de tais ferramentas.
+Conforme mencionado anteriormente, observa-se que o impacto da Inteligência Artificial no desenvolvimento de \textit{software} ainda é um tema em debate, sendo comum que as análises existentes se restrinjam a relatos de uso ou percepções subjetivas por parte dos desenvolvedores. Em muitos casos, a avaliação da influência da IA sobre fatores como produtividade e tempo de execução de tarefas ocorre de forma fragmentada, sem um método padronizado que permita mensurar de maneira objetiva os efeitos reais de tais ferramentas.
 
-Dentro desse cenário, este estudo propõe a elaboração de um desafio técnico, disponibilizado por meio de uma plataforma \textit{web} desenvolvida especificamente para este fim. Essa plataforma funcionará como um ambiente de avaliação controlado, no qual os participantes serão previamente organizados em dois grupos: um grupo com autorização para utilizar ferramentas de IA durante a resolução do desafio e outro grupo que deverá realizar a atividade sem recorrer a tais recursos.
+Dentro desse cenário, a proposta do estudo surge com a elaboração do um desafio técnico, disponibilizado através da plataforma \textit{web} desenvolvida especificamente para este fim. A ferramenta funcionou como um ambiente de avaliação controlado, no qual os participantes foram previamente organizados em dois grupos: um grupo com autorização para utilizar ferramentas de IA durante a resolução do desafio e outro grupo para realizar a atividade sem recorrer a tais recursos.
 
-A proposta busca, assim, criar condições equivalentes para ambos os grupos, garantindo que todos recebam o mesmo enunciado do desafio, apresentado diretamente na plataforma. Para cada participante será disponibilizado um link único, correspondente ao grupo ao qual pertence. A partir desse acesso, o desenvolvedor poderá visualizar as instruções, iniciar a tarefa e, ao concluir, submeter os arquivos com sua solução.
+A proposta buscou, assim, criar condições equivalentes para ambos os grupos, garantindo que todos recebessem o mesmo enunciado do desafio, apresentado diretamente na plataforma. Para cada participante foi disponibilizado um \textit{link} único, correspondente ao grupo ao qual pertencia. A partir desse acesso, o desenvolvedor pôde visualizar as instruções, iniciar a tarefa e, ao concluir, submeter os arquivos com sua solução.
 
-A plataforma também atuará como mecanismo de registro, armazenando automaticamente o tempo total gasto por cada participante, desde o momento em que deu início ao desafio até a finalização da entrega. Dessa forma, além da coleta da solução proposta, será possível analisar métricas objetivas como tempo de conclusão, qualidade do código entregue e eventuais diferenças de abordagem entre os grupos.
+A plataforma também atuou como mecanismo de registro, armazenando automaticamente o tempo total gasto por cada participante, desde o momento em que deu início ao desafio até a finalização da entrega. Dessa forma, além da coleta da solução proposta, foi possível analisar métricas objetivas como tempo de conclusão, resolução dos problemas propostos (\textit{bugs}) e até mesmo, eventuais diferenças de abordagem entre os grupos.
 
 \section{Modelo Proposto}
 
@@ -379,19 +380,33 @@ Lorem ipsum.
 
 \subsection{Funcionalidades}
 
-Lorem ipsum.
+A seguir serão apresentadas as principais funcionalidades da plataforma proposta para o desenvolvimento deste modelo, detalhando cada um delas. Nesta seção estão as telas dos fluxos  de uso e etapas dentro da plataforma. As demais telas estão disponíveis no Apêndice \ref{sec:telas_da_aplicacao}.
 
 \subsection{Formulário Inicial}
 
-Lorem ipsum.
+Ao acessar a plataforma \textit{web} através do \textit{link} fornecido juntamente com as instruções iniciais via \textit{WhatsApp} para cada participante, o desenvolvedor necessita preencher um breve formulário informando seu "Nome e Sobrenome" (que é somente de uso interno na plataforma), seu "Cargo atual" e então pressionar o botão "Registrar". Os campos "Nome e Sobrenome" e "Cargo atual" são obrigatórios para o participante poder avançar.
 
 \subsection{Tela Inicial e Informações do Desafio}
+
+Após o preenchimento do formulário inicial, o participante é direcionado para a primeira tela da plataforma, que neste caso é a tela do desafio técnico propriamente. Porém, nesta tela, antes de exibir os detalhes do desafio, é exibido mais algumas informações que reforçam a necessidade de atenção e dedicação do participante antes de dar início ao teste. 
+
+Estando de acordo, o participante clica no botão "De acordo" e na mesma tela é renderizada todos os detalhes e imagens de cenários de exemplo, descrevendo o desafio técnico que o desenvolvedor irá solucionar. A tela inicial e as informações do desafio encontram-se na Figura \ref{fig:tela_inicial_informacoes_desafio}.
+
+Ao descer um pouco a tela, o desenvolvedor encontra as imagens de cenários de exemplo que ilustram o objetivo final das funcionalidades que a solução precisa atender para concluir o desafio de modo satisfatório, como exemplo da Figura \ref{fig:cenario_exemplo1}.
+
+Ao final da tela, está o botão para realizar o \textit{download} do código-fonte do desafio técnico e logo abaixo, o botão para iniciar o desafio, que só é habilitado após o participante acionar o anterior, ou seja, realizar o \textit{download}. Nesta parte também foi colocado mais um aviso reforçando a importância do participante preparar seu ambiente de desenvolvimento antes de clicar em "iniciar desafio", pois ao acionar este botão, uma rota da API é chamada que armazena no Banco de Dados o horário de início (\textit{timestamp}) do desenvolvedor, registrando assim o momento exato em que o participante iniciou a atividade.
+
+\subsection{Desafio Técnico}
+
+Lorem ipsum.
+
+\subsection{Tela de Upload}
 
 Lorem ipsum.
 
 \section{Análise e Discussão dos Resultados}
 
-Lorem ipsum.
+Nesta seção são apresentadas a coleta e análise dos dados levantados a partir das soluções fornecidas pelos participantes, juntamente com o registro do tempo total de duração para a conclusão do desafio de cada desenvolvedor. Foi coletado também dados de \textit{feedback} referente ao experimento através de um questionário aplicado no término do desafio, com o intuito de forncer mais resultados para uma análise relevante do projeto como um todo.
 
 \subsection{Coleta de Dados}
 
@@ -413,6 +428,7 @@ Lorem ipsum.
 Lorem ipsum.
 
 \section{TELAS DA APLICAÇÃO}
+\label{sec:telas_da_aplicacao}
 
 Lorem ipsum.
 
