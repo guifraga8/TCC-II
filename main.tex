@@ -40,6 +40,43 @@
 \usepackage{setspace}
 \usepackage{enumitem}
 \usepackage{placeins}
+\usepackage{listings}
+\usepackage{xcolor}
+
+\lstdefinelanguage{JavaScript}{
+  keywords={break, case, catch, class, const, continue, debugger, default, delete, do, else, export, extends, finally, for, function, if, import, in, instanceof, let, new, return, super, switch, this, throw, try, typeof, var, void, while, with, yield},
+  morekeywords={async, await},
+  sensitive=true,
+  comment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  string=[b]",
+  morestring=[b]'
+}
+
+\lstset{
+  language=JavaScript,
+  basicstyle=\ttfamily\small,
+  keywordstyle=\color{blue}\bfseries,
+  commentstyle=\color{green!50!black}\itshape,
+  stringstyle=\color{red},
+  numbers=left,
+  numberstyle=\tiny,
+  stepnumber=1,
+  numbersep=5pt,
+  showstringspaces=false,
+  breaklines=true,
+  frame=single,
+  captionpos=b
+}
+
+\newcommand{\lstcaptioncustom}[2][]{%
+  \captionsetup{type=figure} % ou table se preferir
+  \lstset{style=jsstyle, caption={#2}}%
+  \lstinputlisting[#1]{#2}%
+}
+
+\setlength{\fboxsep}{1pt}
+\setlength{\fboxrule}{0.5pt}
 %\usepackage{longtable}
 
 \DeclareFloatingEnvironment[
@@ -95,7 +132,7 @@ Artigo apresentado como requisito parcial para obtenção do título de Bacharel
 % Diferentemente do normal, os comandos a seguir devem vir aqui mesmo,
 % e não antes do \begin{document} onde seria o lugar deles. 
 \tituloArtigo{Inteligência Artificial e \textit{Vibe Coding} no Processo de Desenvolvimento de \textit{Software}:}{Um estudo comparativo entre desenvolvedores com e sem o uso de ferramentas de IA}
-\autorArtigo{Guilherme Closs Fraga\footnote{Graduando em Ciência da Computação pela Unisinos.  Email: guifraga8@edu.unisinos.br}}
+\autorArtigo{Guilherme Closs Fraga\footnote{Graduando em Ciência da Computação pela Unisinos. Email: guifraga8@edu.unisinos.br}}
 \autorArtigo{Rosemary Francisco\footnote{Doutora em Administração. Email: rosemaryf@unisinos.br}}
 
 %=======================================================================
@@ -106,7 +143,7 @@ Artigo apresentado como requisito parcial para obtenção do título de Bacharel
 \begin{abstract}
 Lorem ipsum.
 
-\palavraschave{lorem ipsum.}
+\palavraschave{inteligência artificial. generativa. desenvolvimento de software.}
 \end{abstract}
 
 \begin{otherlanguage}{english}
@@ -114,7 +151,7 @@ Lorem ipsum.
 \begin{abstract}
 Lorem ipsum.
 \end{abstract}
-\palavraschave{lorem ipsum.}
+\palavraschave{artificial intelligence. generative. software development.}
 \end{otherlanguage}
 
 %=======================================================================
@@ -124,20 +161,20 @@ Lorem ipsum.
 
 A Inteligência Artificial (IA) é considerada uma das tecnologias mais transformadoras da atualidade, impulsionando mudanças em diversos setores e despertando interesse tanto no meio acadêmico quanto no mercado. Trata-se do uso de algoritmos e modelos computacionais capazes de realizar tarefas tradicionalmente dependentes da cognição humana, como análise de dados, raciocínio lógico e tomada de decisão (CÂNDIDO, 2022; AGUIAR, 2023). Segundo relatório da McKinsey (2025), a utilização de ferramentas de IA generativa pode aumentar a produtividade de desenvolvedores em tarefas de codificação, permitindo a execução de certas atividades até duas vezes mais rápido que processos totalmente manuais. Apesar desses avanços, a adoção dessas tecnologias levanta questões sobre dependência excessiva, erosão de habilidades humanas e confiabilidade das soluções geradas.
 
-No contexto do desenvolvimento de \textit{software}, a presença da IA tem se tornado particularmente evidente. Ferramentas que combinam aprendizado de máquina e processamento de linguagem natural auxiliam desenvolvedores em diversas etapas do ciclo de vida do \textit{software}, desde a escrita de código até a detecção de falhas e a otimização de desempenho (COUTINHO et al., 2024). Um exemplo é o \textit{GitHub Copilot}, lançado em 2021 pela \textit{GitHub} em parceria com a \textit{OpenAI}, que utiliza modelos de IA Generativa (também chamadas de IA Gen) para sugerir trechos de código em tempo real \cite{github2021}. Da mesma forma, agentes de codificação baseados em IA, alinhados ao conceito de vibe coding, permitem que o desenvolvedor interaja de forma mais conversacional com a ferramenta, gerando código de maneira assistida, mas ainda mantendo controle sobre decisões críticas (CACM, 2025). Essas práticas têm sido discutidas como um avanço na programação assistida, trazendo benefícios de produtividade e colaboração entre humano e máquina.
+No contexto do desenvolvimento de \textit{software}, a presença da IA tem se tornado particularmente evidente. Ferramentas que combinam aprendizado de máquina e processamento de linguagem natural auxiliam desenvolvedores em diversas etapas do ciclo de vida do \textit{software}, desde a escrita de código até a detecção de falhas e a otimização de desempenho (COUTINHO et al., 2024). Um exemplo é o \textit{GitHub Copilot}, lançado em 2021 pela \textit{GitHub} em parceria com a \textit{OpenAI}, que utiliza modelos de IA Generativa (também chamadas de IA Gen) para sugerir trechos de código em tempo real \cite{github2021}. Da mesma forma, agentes de codificação baseados em IA, alinhados ao conceito de vibe coding, permitem que o desenvolvedor interaja de forma mais conversacional com a ferramenta, gerando código de maneira assistida, mas ainda mantendo controle sobre decisões críticas \cite{delaney2025}. Essas práticas têm sido discutidas como um avanço na programação assistida, trazendo benefícios de produtividade e colaboração entre humano e máquina.
 
 Esses recursos, ao mesmo tempo em que oferecem praticidade e aumentam a produtividade, também levantam debates relevantes. Há questionamentos sobre até que ponto a utilização de IA generativa pode impactar o desenvolvimento de habilidades de raciocínio lógico e resolução de problemas, uma vez que o programador pode se tornar excessivamente dependente da ferramenta (VERASTEGUI; RUIZ; VILLANUEVA, 2025). Além disso, o código gerado pode apresentar erros lógicos, violações de boas práticas e vulnerabilidades de segurança, exigindo revisão crítica por parte do profissional (DEVOPS, 2024). Estudos experimentais indicam resultados variados: enquanto tarefas simples podem ser concluídas significativamente mais rápido com IA, contextos complexos podem exigir maior tempo de revisão e adaptação do código (PENG et al., 2023; METR, 2025).
 
 Por outro lado, pesquisas recentes indicam que a adoção de IA no desenvolvimento de \textit{software} pode representar ganhos significativos em termos de produtividade e redução do tempo necessário para a entrega de soluções. Um estudo piloto com profissionais de \textit{software} demonstrou percepções majoritariamente positivas quanto ao impacto desses recursos na produtividade individual \cite{coutinho2024}. Essa realidade torna essencial a investigação de como essas ferramentas impactam o trabalho de desenvolvedores em contextos práticos. Assim, mais do que um recurso de conveniência, a IA se apresenta como um instrumento que pode redefinir processos e metodologias de engenharia de \textit{software}.
 
-Diante desse cenário, torna-se essencial investigar como a IA generativa influencia o desempenho de desenvolvedores. Este trabalho propõe um estudo comparativo entre dois grupos de participantes: um com acesso a ferramentas de IA Generativa e outro sem acesso a esses recursos, aplicando um desafio técnico de programação. O objetivo é avaliar variáveis como eficiência, tempo de resolução e capacidade para solucionar os problemas propostos, fornecendo uma investigação sobre vantagens e limitações do uso dessas tecnologias.
+Diante desse cenário, torna-se essencial investigar como a IA Generativa influencia o desempenho de desenvolvedores. Este trabalho propõe um estudo comparativo entre dois grupos de participantes: um com acesso a ferramentas de IA Generativa e outro sem acesso a esses recursos, aplicando um desafio técnico de programação. O objetivo é avaliar variáveis como eficiência, tempo de resolução e capacidade para solucionar os problemas propostos, fornecendo uma investigação sobre vantagens e limitações do uso dessas tecnologias.
 
 Assim, o objetivo geral desta pesquisa é analisar o uso de ferramentas de IA Generativa no Desenvolvimento de \textit{Software} por meio de um desafio técnico comparativo entre desenvolvedores com e sem acesso a essas ferramentas. A questão de pesquisa que orienta este estudo é: de que maneira o uso de ferramentas de IA Generativa contribui ou afeta o desempenho de desenvolvedores em atividades práticas de programação? Destacam-se também os objetivos específicos necessários para atingir a conclusão deste trabalho, sendo eles:
 
 \begin{enumerate}[label=\alph*), leftmargin=1.2cm, itemsep=0.1em, topsep=0.1em]
     \item desenvolver uma plataforma \textit{web} simples para disponibilização do desafio técnico e coleta de dados de desempenho dos participantes;
     \item aplicar o desafio técnico a dois grupos de desenvolvedores, sendo um autorizado a utilizar ferramentas de IA e outro restrito ao uso dessas tecnologias;
-    \item comparar os resultados obtidos pelos grupos em relação ao tempo de conclusão, qualidade do código entregue e abordagem adotada na resolução do problema;
+    \item comparar os resultados obtidos pelos grupos em relação ao tempo de conclusão e resolução do desafio proposto;
     \item analisar as vantagens, limitações e possíveis implicações do uso de ferramentas de IA no processo de desenvolvimento de \textit{software}.
 \end{enumerate}
 
@@ -273,7 +310,7 @@ Dado o contexto do aprimoramento e evolução de Inteligências Artificiais Gene
 
 Como resultado, o \citeonline{gomes2023} aponta que ambas as tecnologias se mostram extremamente úteis no processo de otimização do desenvolvimento, produtividade e qualidade de códigos, com a escolha entre elas dependendo das necessidades particulares do projeto e das preferências do profissional. Entretanto, o destaque ficou para a ferramenta \textit{GitHub Copilot}, que apresentou uma leve vantagem, com uma capacidade superior de compreensão para construção de uma lógica de desenvolvimento mais coesa.
 
-Em \citeonline{daSilva2025}, é realizado o teste prático de viabilidade de desenvolvimento de uma aplicação \textit{web} para gerenciamento de sócios torcedores de um clube de futebol, utilizando IA Generativa como apoio na construção da aplicação. Ainda que, neste estudo os autores desenvolveram uma solução simples, utilizando tecnologias como \textit{JavaScript}, \textit{PHP}, \textit{HTML5} e entre outras, o trabalho demonstrou que utilizar de Inteligência Artificial otimiza o processo de desenvolvimento, desde a geração de código, identificação de falhas e sugestões de melhores práticas para a construção de soluções.
+Em \citeonline{daSilva2025}, é realizado o teste prático de viabilidade de desenvolvimento de uma aplicação \textit{web} para gerenciamento de sócios torcedores de um clube de futebol, utilizando IA Generativa como apoio na construção da aplicação. Ainda que, neste estudo os autores desenvolveram uma solução simples, utilizando tecnologias como \textit{JavaScript}\footnote{\textit{JavaScript}: \url{https://developer.mozilla.org/pt-BR/docs/Web/JavaScript}}, \textit{PHP}, \textit{HTML5} e entre outras, o trabalho demonstrou que utilizar de Inteligência Artificial otimiza o processo de desenvolvimento, desde a geração de código, identificação de falhas e sugestões de melhores práticas para a construção de soluções.
 
 De acordo com os autores e os resultados obtidos \cite{daSilva2025}, a adoção de IA Generativa no processo de desenvolvimento contribui tanto para acelerar a produção, quanto para a qualidade e otimização da aplicação. Para o estudo em questão, os autores contaram com o suporte de modelos de IA Generativa como \textit{GPT-3.5} e \textit{Claude 1}.
 
@@ -289,7 +326,7 @@ Para tanto o autor \cite{santos2024} seguiu um delineamento \textit{crossover} 2
 
 Ademais, o autor \cite{costa2024} fez o uso de ferramentas de teste e documentação de \textit{APIs}, tais como \textit{Postman} e até mesmo \textit{JUnit}, como \textit{framework} para validação de testes unitários. Em seu trabalho, o autor utilizou a IA Generativa através de \textit{prompts} para criação de todos os requisitos, códigos e validações do seu projeto. Como resultado, ele evidenciou uma melhoria na eficiência tanto do desenvolvimento quanto da qualidade da aplicação entregue. Entretanto, ressaltou a importância de que, o conhecimento prévio para uso de IAs Generativas é fundamental, para que se torne possível o uso da mesma como ferramenta de apoio no processo de desenvolvimento de \textit{software}.
 
-Por fim, com base nos estudos analisados e considerando o crescimento acelerado das ferramentas de Inteligência Artificial Generativa na atualidade, evidencia-se que o profissional — independentemente da área de atuação — pode, e deve, tirar proveito dessas tecnologias para se manter em constante aprendizado e adaptado às novas realidades do mercado. Ou seja, não é necessário dominar todos os princípios técnicos por trás dessas ferramentas, mas sim saber utilizá-las estrategicamente, visando otimização, desempenho e melhores resultados.
+Por fim, com base nos estudos analisados e considerando o crescimento acelerado das ferramentas de Inteligência Artificial Generativa na atualidade, evidencia-se que o profissional, independentemente da área de atuação, pode, e deve, tirar proveito dessas tecnologias para se manter em constante aprendizado e adaptado às novas realidades do mercado. Ou seja, não é necessário dominar todos os princípios técnicos por trás dessas ferramentas, mas sim saber utilizá-las estrategicamente, visando otimização, desempenho e melhores resultados.
 
 Dessa forma, a proposta deste estudo é analisar, com base em dados e indicadores, o quanto o uso da Inteligência Artificial Generativa pode contribuir, junto aos profissionais da área de desenvolvimento de \textit{software}, para a entrega de soluções mais ágeis. Para delimitar o foco principal do trabalho, o segmento analisado será o desenvolvimento de software, considerando o papel do desenvolvedor no cenário atual do mercado de trabalho.
 
@@ -372,37 +409,286 @@ A aplicação coleta o nome e o cargo atual do participante no mercado de trabal
 
 \subsection{Visão Geral}
 
-Lorem ipsum.
+A plataforma desenvolvida tem como objetivo oferecer um ambiente controlado, acessível e intuitivo para a realização de um desafio técnico. Sua concepção visa permitir a comparação entre dois grupos de participantes, um autorizado a utilizar ferramentas de IA Generativa e outro sem esse recurso, garantindo condições iguais de execução e coleta precisa de dados para análise posterior.
+
+A aplicação dispõe de duas telas de cadastro semelhantes, diferenciadas apenas pelo tipo de participante. Uma é destinada aos desenvolvedores do grupo sem IA, e a outra aos do grupo com IA. Essa distinção é registrada internamente no banco de dados, identificando a qual grupo o participante pertence. A partir desse ponto, todo o fluxo de utilização da plataforma é idêntico para ambos os grupos, assegurando que todos recebam o mesmo desafio técnico, com os mesmos detalhes e informações.
+
+Um aspecto essencial considerado durante o desenvolvimento foi o registro automático do tempo total de execução de cada participante. Esse recurso elimina a necessidade de solicitar uma estimativa manual de tempo após a conclusão, o que poderia gerar dados imprecisos e subjetivos. Assim, o sistema contabiliza precisamente o período compreendido entre o momento em que o participante inicia o desafio e o instante em que o finaliza.
+
+Além disso, a plataforma foi projetada para proporcionar uma experiência simples e direta tanto para o acesso ao código-fonte do desafio quanto para o envio da solução desenvolvida. Ao término da atividade, o sistema disponibiliza um botão que direciona o participante ao formulário de \textit{feedback}, ajustado conforme o grupo ao qual pertence (sem ou com IA). Essa diferenciação se faz necessária, pois embora algumas perguntas sejam comuns entre os grupos, outras foram elaboradas especificamente para compreender a experiência de poder, ou não, utilizar ferramentas de IA generativa durante a execução do desafio.
 
 \subsection{Arquitetura e Tecnologias}
 
-Lorem ipsum.
+A plataforma é dividida em três partes: a aplicação \textit{web}, uma \textit{API REST} e um banco de dados. A aplicação \textit{web} é responsável pelo formulário inicial (cadastro e identificação) dos desenvolvedores, exibição dos detalhes do desafio técnico e por todo o fluxo de etapas ao longo do experimento, como início do desafio, envio do arquivo com a solução por parte do desenvolvedor e finalização do desafio.
+
+A \textit{API REST} é responsável por controlar toda a comunicação com o banco de dados do sistema, através das rotas configuradas que realizam operações como: registrar no banco de dados o tempo de ínicio do desenvolvedor (\textit{timestamp}) ao iniciar o desafio, registrar o tempo de término, armazenar o tempo total em milissegundos (ms) para a conclusão do desafio, armazenar o tipo do grupo do grupo do desenvolvedor (com ou sem IA), cargo do mesmo, realizar o download da pasta \textit{.zip} do código-fonte na máquina do participante, assim como realizar o \textit{upload} da solução do mesmo para o \textit{back-end}.
+
+Sobre as tecnologias utilizadas, a aplicação \textit{web} foi desenvolvida utilizando \textit{React.js}\footnote{\textit{React.js}: \url{https://pt-br.reactjs.or}}. Esta biblioteca foi escolhida por ser bastante similar e utilizar \textit{JavaScript} como base, simplificando assim a construção da plataforma, até mesmo pela sua praticidade para a organização de páginas e componentes reutilizáveis entre elas, o que facilita muito a organização durante o desenvolvimento. Para otimizar a construção do \textit{front-end}, foi utilizado também a biblioteca \textit{Material UI}\footnote{\textit{Material UI}: \url{https://mui.com/material-ui/}}, uma biblioteca de componentes \textit{React}, \textit{open source}, que implementa o \textit{Material Design} do \textit{Google}.
+
+Através das escolhas anteriores, acabou sendo determinante para que a \textit{API REST} fosse construída utilizando \textit{Express.js}\footnote{\textit{Express.js}: \url{https://expressjs.com/}}, sendo este um \textit{framework} minimalista e flexível para \textit{Node.js}\footnote{\textit{Node.js}: \url{https://nodejs.org/pt}}, que simplifica consideravelmente a criação de \textit{APIs}, fornecendo ferramentas para tarefas como roteamento e manipulação de requisições \textit{HTTP}. Além de prático com sua leveza e liberdade oferecida durante o processo de desenvolvimento, resultam em conseguir realizar a entrega de uma solução simples com mais precisão.
+
+Por fim, a transferência de dados entre a aplicação web com a \textit{API} foi feita utilizando arquivos \textit{JSON}, recebendo-os e manipulando-os. Para o banco de dados, foi utilizado \textit{PostgreSQL}\footnote{\textit{PostgreSQL}: \url{https://www.postgresql.org/}}, por ser um banco de dados relacional de objeto e \textit{open source}, conhecido por sua robustez, confiabildade, extensibilidade e até mesmo, fácil manuseio e implementação. Ele suporta tanto dados relacionais (\textit{SQL}) quanto não relacionais (\textit{JSON}), compatibilidade com padrões \textit{SQL}, e funcionalidades avançadas como chaves estrangeiras, gatilhos e recuperação pontual. Por ser \textit{open soruce}, o \textit{PostgreSQL} é igualmente gratuito. Para a estrutura das tabelas e seus dados, foi seguido o modelo de dados relacionais (\textit{SQL}), afinal, foram necessárias somente três tabelas para o banco de dados, sendo elas:
+
+\begin{itemize}[leftmargin=1cm, itemsep=0.1em, topsep=0.1em]
+    \item \textit{Developer}, responsável por armazenar as informações do administrador e dos participantes;
+    \item \textit{Challenge}, responsável por armazenar os dados de início, término e tempo total da conclusão do desafio de cada participante;
+    \item \textit{DeveloperChallenge}, responsável por armazenar os dados referentes ao arquivo de solução do desenvolvedor.
+\end{itemize}
+
+O diagrama ER do banco de dados está disponível no Apêndice A. Sobre o \textit{deploy} de todas as camadas da plataforma, a aplicação \textit{web} foi hospedada na plataforma \textit{Vercel}\footnote{\textit{Vercel}: \url{ https://vercel.com/}}, que possui planos gratuitos e também pela  praticidade de sua integração ao repositório no \textit{GitHub}\footnote{\textit{GitHub}: \url{https://github.com/}}, que facilita no processo de \textit{deploys} automáticos conforme novos \textit{commits} vão sendo feitos ao repositório remoto.
+
+Por fim, a \textit{API} e o banco de dados \textit{PostgreSQL} foram hospedados na plataforma \textit{Railway}\footnote{\textit{Railway}: \url{https://railway.com/}}, por possuir planos com créditos limitados para consumo/uso por alguns dias ou até o término dos créditos. Sua versatilidade para igualmente integrar ao repositório no \textit{GitHub}, também trouxe praticidade para que o \textit{deploy} da \textit{API} fosse realizado sem muitas complicações a cada novo \textit{commit}. Para o banco de dados, foi exportado somente o arquivo \texttt{.dump} do ambiente local de desenvolviemnto e importado para o \textit{Railway}.
+
+As ferramentas utilizadas no processo de desenvolvimento foram o \textit{Visual Studio Code}\footnote{\textit{Visual Studio Code}: \url{https://code.visualstudio.com/}} (\textit{VS Code}), editor de código-fonte popularmente conhecido, especialmente para o desenvolvimento de aplicações \textit{web} e praticipade para o uso do \textit{terminal} dentro do \textit{VS Code}. Outra ferramenta utilizada para os testes das rotas da \textit{API} a medida em que iam sendo criadas, antes de serem integradas ao \textit{front-end}, foi a ferramenta \textit{Postman}\footnote{\textit{Postman}: \url{https://www.postman.com/}}, por facilitar a criação, testes e documentação de \textit{APIs}, permitindo o envio de requisições \textit{HTTP}/\textit{HTTPS}. Com sua interface intuitiva, se tornou prático ir fazendo o acompanhamento das requisições que eram feitas e a armazenagem dos dados no banco.
+
+Um breve diagrama da arquitetura do modelo é ilustrado na Figura \ref{fig:arquitetura}.
+
+\begin{figure}[ht]
+    \caption{Arquitetura do modelo}
+    \label{fig:arquitetura}
+    \centering
+    \footnotesize
+    \begin{minipage}{.9\textwidth}
+        \centering
+        \fbox{\includegraphics[width=0.50\textwidth]{images/arquitetura.png}}
+        \fonte{Elaborado pelo autor}
+    \end{minipage}
+\end{figure}
+\FloatBarrier
 
 \subsection{Funcionalidades}
 
-A seguir serão apresentadas as principais funcionalidades da plataforma proposta para o desenvolvimento deste modelo, detalhando cada um delas. Nesta seção estão as telas dos fluxos  de uso e etapas dentro da plataforma. As demais telas estão disponíveis no Apêndice \ref{sec:telas_da_aplicacao}.
+A seguir serão apresentadas as principais funcionalidades da plataforma proposta para o desenvolvimento deste modelo, detalhando cada um delas. Nesta seção estão as telas dos fluxos  de uso e etapas dentro da plataforma. As demais telas estão disponíveis no Apêndice B.
 
 \subsection{Formulário Inicial}
 
-Ao acessar a plataforma \textit{web} através do \textit{link} fornecido juntamente com as instruções iniciais via \textit{WhatsApp} para cada participante, o desenvolvedor necessita preencher um breve formulário informando seu "Nome e Sobrenome" (que é somente de uso interno na plataforma), seu "Cargo atual" e então pressionar o botão "Registrar". Os campos "Nome e Sobrenome" e "Cargo atual" são obrigatórios para o participante poder avançar.
+Ao acessar a plataforma \textit{web} através do \textit{link} fornecido juntamente com as instruções iniciais via \textit{WhatsApp} para cada participante, o desenvolvedor necessita preencher um breve formulário informando seu "Nome e Sobrenome" (que é somente de uso interno na plataforma), seu "Cargo atual" e então pressionar o botão "Registrar". Os campos "Nome e Sobrenome" e "Cargo atual" são obrigatórios para o participante poder avançar. Na Figura \ref{fig:cadastro_sem_ia} está a tela de registro do participante do grupo sem IA e na Figura \ref{fig:cadastro_com_ia} está a tela de registro do participante do grupo com IA, respectivamente.
+
+\begin{figure}[ht]
+    \caption{Cadastro do participante do grupo sem IA}
+    \label{fig:cadastro_sem_ia}
+    \centering
+    \footnotesize
+    \begin{minipage}{.9\textwidth}
+        \centering
+        \fbox{\includegraphics[width=0.95\textwidth]{images/cadastro_sem_ia.png}}
+        \fonte{Elaborado pelo autor}
+    \end{minipage}
+\end{figure}
+\FloatBarrier
+
+\begin{figure}[ht]
+    \caption{Cadastro do participante do grupo com IA}
+    \label{fig:cadastro_com_ia}
+    \centering
+    \footnotesize
+    \begin{minipage}{.9\textwidth}
+        \centering
+        \fbox{\includegraphics[width=0.95\textwidth]{images/cadastro_com_ia.png}}
+        \fonte{Elaborado pelo autor}
+    \end{minipage}
+\end{figure}
+\FloatBarrier
 
 \subsection{Tela Inicial e Informações do Desafio}
 
 Após o preenchimento do formulário inicial, o participante é direcionado para a primeira tela da plataforma, que neste caso é a tela do desafio técnico propriamente. Porém, nesta tela, antes de exibir os detalhes do desafio, é exibido mais algumas informações que reforçam a necessidade de atenção e dedicação do participante antes de dar início ao teste. 
 
-Estando de acordo, o participante clica no botão "De acordo" e na mesma tela é renderizada todos os detalhes e imagens de cenários de exemplo, descrevendo o desafio técnico que o desenvolvedor irá solucionar. A tela inicial e as informações do desafio encontram-se na Figura \ref{fig:tela_inicial_informacoes_desafio}.
+Estando de acordo, o participante clica no botão "De acordo" e na mesma tela é renderizada todos os detalhes e imagens de cenários de exemplo, descrevendo o desafio técnico que o desenvolvedor irá solucionar. A tela inicial e as informações do desafio encontram-se na Figura \ref{fig:tela_inicial} e Figura \ref{fig:informacoes_desafio}, respectivamente.
 
-Ao descer um pouco a tela, o desenvolvedor encontra as imagens de cenários de exemplo que ilustram o objetivo final das funcionalidades que a solução precisa atender para concluir o desafio de modo satisfatório, como exemplo da Figura \ref{fig:cenario_exemplo1}.
+\begin{figure}[ht]
+    \caption{Tela inicial}
+    \label{fig:tela_inicial}
+    \centering
+    \footnotesize
+    \begin{minipage}{.9\textwidth}
+        \centering
+        \fbox{\includegraphics[width=0.95\textwidth]{images/tela_inicial.png}}
+        \fonte{Elaborado pelo autor}
+    \end{minipage}
+\end{figure}
+\FloatBarrier
 
-Ao final da tela, está o botão para realizar o \textit{download} do código-fonte do desafio técnico e logo abaixo, o botão para iniciar o desafio, que só é habilitado após o participante acionar o anterior, ou seja, realizar o \textit{download}. Nesta parte também foi colocado mais um aviso reforçando a importância do participante preparar seu ambiente de desenvolvimento antes de clicar em "iniciar desafio", pois ao acionar este botão, uma rota da API é chamada que armazena no Banco de Dados o horário de início (\textit{timestamp}) do desenvolvedor, registrando assim o momento exato em que o participante iniciou a atividade.
+\begin{figure}[ht]
+    \caption{Informações do desafio}
+    \label{fig:informacoes_desafio}
+    \centering
+    \footnotesize
+    \begin{minipage}{.9\textwidth}
+        \centering
+        \fbox{\includegraphics[width=0.95\textwidth]{images/informacoes_desafio.png}}
+        \fonte{Elaborado pelo autor}
+    \end{minipage}
+\end{figure}
+\FloatBarrier
+
+Ao descer um pouco a tela, o desenvolvedor encontra as imagens de cenários de exemplo que ilustram o objetivo final das funcionalidades que a solução precisa atender para concluir o desafio de modo satisfatório, como exemplo da Figura \ref{fig:exemplos_desafio}.
+
+\begin{figure}[ht]
+    \caption{Cenário de exemplo}
+    \label{fig:exemplos_desafio}
+    \centering
+    \footnotesize
+    \begin{minipage}{.9\textwidth}
+        \centering
+        \fbox{\includegraphics[width=0.95\textwidth]{images/exemplos_desafio.png}}
+        \fonte{Elaborado pelo autor}
+    \end{minipage}
+\end{figure}
+\FloatBarrier
+
+Ao final da tela, conforme a Figura \ref{fig:baixar_iniciar_desafio}, está o botão para realizar o \textit{download} do código-fonte do desafio técnico e logo abaixo, o botão para iniciar o desafio, que só é habilitado após o participante acionar o anterior, ou seja, realizar o \textit{download}. Nesta parte também foi colocado mais um aviso reforçando a importância do participante preparar seu ambiente de desenvolvimento antes de clicar em "iniciar desafio", pois ao acionar este botão, uma rota da \textit{API} é chamada que armazena no banco de dados o horário de início (\textit{timestamp}) do desenvolvedor, registrando assim o momento exato em que o participante iniciou a atividade.
+
+\begin{figure}[ht]
+    \caption{Baixar e iniciar desafio}
+    \label{fig:baixar_iniciar_desafio}
+    \centering
+    \footnotesize
+    \begin{minipage}{.9\textwidth}
+        \centering
+        \fbox{\includegraphics[width=0.95\textwidth]{images/baixar_iniciar_desafio.png}}
+        \fonte{Elaborado pelo autor}
+    \end{minipage}
+\end{figure}
+\FloatBarrier
 
 \subsection{Desafio Técnico}
 
-Lorem ipsum.
+Para projetar o desafio técnico proposto dentro da plataforma, imaginou-se um cenário fictício, onde para isso foi reaproveitado um projeto particular utilizado anteriormente pelo pesquisador apenas para fins de estudo pessoal. Este projeto consiste em um sistema simples de logística de uma transportadora, onde, conforme mencionado anteriormente, trata-se de uma interface \textit{web} básica, que permite a entrada de um \textit{input} e retorna um \textit{output}.
 
-\subsection{Tela de Upload}
+Sendo assim, os dados de \textit{input} que são utilizados, nada mais são do que itens, no formato "pesokg item" (podendo ser aceito formatos como "peso KG item", "peso kg item" e etc.), que representam itens em que o sistema da transportadora deverá alocar automaticamente em cada tipo de veículo de acordo com a capacidade do mesmo e de acordo com o peso do item, otimizando a eficiência e exibindo os detalhes necessários de acordo com o \textit{output} esperado pelo sistema.
 
-Lorem ipsum.
+No campo de \textit{input} do sistema, cada linha representa um item, não diferenciando letras maiúsculas de minúsculas. Neste sistema, foram alocados quatro tipos de veículos com suas respectivas capacidades. Numa simulação, mais de um mesmo tipo de veículo poderia ser utilizado se, de acordo com os pesos dos itens, encaixassem neste mesmo tipo de veículo. Como por exemplo: 2 itens de 45kg, o veículo do tipo "moto" possui capacidade de 45kg, ou seja, seria alocado "duas motos" para carregarem estas cargas.
+
+Para o desafio técnico, foi fornecido todo o código-fonte do sistema, incluindo arquivos como \texttt{index.html}, \texttt{style.css}, que compõem a interface \textit{web} do desafio. Entretanto, como regra do desafio, foi exigido para os participantes que só realizassem as alterações no arquivo \texttt{main.js}, visto que este contém toda a lógica de negócio para as funcionalidades exigidas no sistema de logística. Assim, seria mais prático para os desenvolvedores utilizarem da interface \textit{web} já pronta, sem a necessidade de ajustes, para a realização de testes manuais à medida que iriam realizando as correções necessárias para atingir os objetivos.
+
+Isto dito, tendo como referência o código-fonte base (disponível completo no Apêndice G), foram sendo adicionados diversos \textit{bugs} propositais no arquivo \texttt{main.js}, ou seja, sendo quebrado o código em diversas partes, para que os participantes do experimento solucionassem os mesmos. Estes \textit{bugs} foram organizados em uma lista para controle e análises posteriores, após a conclusão e envio das soluções dos desenvolvedores, que encontra-se no Apêndice H. O arquivo \texttt{main.js} fornecido para os desenvolvedores com os \textit{bugs} encontra-se disponível no Apêndice G.
+
+\subsection{Tela de \textit{Upload}}
+
+Após o participante clicar no botão "Iniciar Desafio", o mesmo é direcionado para a tela de \textit{upload}. Nesta tela, as informações referentes ao desafio permanecem sem alterações, para que fosse possível ao participante consultar a medida que fosse solucionando os \textit{bugs}. O diferencial desta tela se dá pelo título no topo, conforme a Figura \ref{fig:tela_upload}, indicando ao participante que ao término da sua solução, o mesmo deve descer até o final da página para realizar o envio do seu arquivo através dos botões indicados. 
+
+\begin{figure}[ht]
+    \caption{Tela de \textit{Upload}}
+    \label{fig:tela_upload}
+    \centering
+    \footnotesize
+    \begin{minipage}{.9\textwidth}
+        \centering
+        \fbox{\includegraphics[width=0.95\textwidth]{images/tela_upload.png}}
+        \fonte{Elaborado pelo autor}
+    \end{minipage}
+\end{figure}
+\FloatBarrier
+
+No final da página, encontram-se os botões para o participante selecionar seu arquivo e finalizar o desafio. O segundo botão só é habilitado após um arquivo ser selecionado. A plataforma ainda permite após escolher um arquivo, editar para selecionar outro, caso o primeiro tenha sido escolhido erroneamente ou caso o participante tenha feito alguma alteração antes de, de fato, finalizar o desafio.
+
+Para fins de tornar mais prático a experiência do participante, foi limitado para que a plataforma aceitasse apenas arquivos \textit{.zip}, pensando no cenário de que, após a conclusão por parte do desenvolvedor, o mesmo só precisaria compactar a pasta completa da sua solução e realizar o envio. Uma vez que o arquivo é selecionado, a aplicação o armazena em uma pasta temporária (\textit{tmp}) no \textit{back-end} e, após clicar no botão "Finalizar Desafio", a rota da \textit{API} responsável por encerrar o desafio é chamada, onde então é armazenado no banco de dados o \textit{timestamp} de conclusão do desenvolvedor e feito o cálculo da diferença entre o \textit{timestamp} de conclusão e de início, para igualmente armazenar no banco de dados o tempo total, em milissegundos (ms) da duração para o participante concluir o desafio. Após isso, o arquivo é movido da pasta \textit{tmp} para a pasta \textit{uploads} no \textit{back-end}. Na Figura \ref{fig:selecionar_arquivo_finalizar_desafio} encontra-se os botões mencionados acima.
+
+\begin{figure}[ht]
+    \caption{Selecionar arquivo e finalizar desafio}
+    \label{fig:selecionar_arquivo_finalizar_desafio}
+    \centering
+    \footnotesize
+    \begin{minipage}{.9\textwidth}
+        \centering
+        \fbox{\includegraphics[width=0.95\textwidth]{images/selecionar_arquivo_finalizar_desafio.png}}
+        \fonte{Elaborado pelo autor}
+    \end{minipage}
+\end{figure}
+\FloatBarrier
+
+Após o desafio finalizado, o participante é direcionado para uma tela final de agradecimento, com um botão para direcioná-lo ao preenchiemnto do formulário de \textit{feedback} do experimento através da ferramenta \textit{Google Forms}\footnote{\textit{Google Forms}: \url{https://workspace.google.com/intl/pt-BR/products/forms/}}, conforme a Figura \ref{fig:tela_final_formulario} abaixo.
+
+\begin{figure}[ht]
+    \caption{Tela final e formulário}
+    \label{fig:tela_final_formulario}
+    \centering
+    \footnotesize
+    \begin{minipage}{.9\textwidth}
+        \centering
+        \fbox{\includegraphics[width=0.95\textwidth]{images/tela_final_formulario.png}}
+        \fonte{Elaborado pelo autor}
+    \end{minipage}
+\end{figure}
+\FloatBarrier
+
+\subsection{Painel de Administrador}
+
+O acompanhamento das soluções dos desenvolvedores foram realizadas através de um painel de uso exclusivo do administrador do experimento. Este painel foi projetado com o objetivo de centralizar as informações principais dos participantes, agrupando-os em dados gerais e em seus grupos alocados (sem IA e com IA). O acesso deste painel é feito através de um \textit{link}\footnote{\textit{Link} para o Painel de Administrador: \url{https://ai-use-productivity.vercel.app/admin}}, que funciona como um "login" simples, apenas informando o nome do administrador, que aciona uma rota da API para validar se este nome informado está registrado no banco de dados como administrador. Esta tela encontra-se na Figura \ref{fig:painel_admin}.
+
+\begin{figure}[ht]
+    \caption{Acesso ao Painel de Administrador}
+    \label{fig:painel_admin}
+    \centering
+    \footnotesize
+    \begin{minipage}{.9\textwidth}
+        \centering
+        \fbox{\includegraphics[width=0.95\textwidth]{images/painel_admin.png}}
+        \fonte{Elaborado pelo autor}
+    \end{minipage}
+\end{figure}
+\FloatBarrier
+
+Acessando então como administrador, direciona-se para a tela de painel central, onde exibe informações gerais como o total de participantes do experimento, quantos pertencem ao grupo com IA, quantos pertencem ao grupo sem IA, a quantidade de arquivos enviados (soluções dos desenvolvedores) e o tempo médio geral de todos os participantes. A Figura \ref{fig:painel_central_admin} demonstra esta tela.
+
+\begin{figure}[ht]
+    \caption{Painel Central}
+    \label{fig:painel_central_admin}
+    \centering
+    \footnotesize
+    \begin{minipage}{.9\textwidth}
+        \centering
+        \fbox{\includegraphics[width=0.95\textwidth]{images/painel_central_admin.png}}
+        \fonte{Elaborado pelo autor}
+    \end{minipage}
+\end{figure}
+\FloatBarrier
+
+Através da barra de menu lateral à esquerda, tem-se a opção de "Resultados", que igualmente, exibe todos os resultados, individuais, de cada um dos participantes, em formatos de "\textit{cards}". Para cada participante é exibido o seu cargo, o tempo total que o mesmo levou para concluir o desafio, o grupo ao qual pertencia e o nome do seu arquivo enviado. Para facilitar no momento de identificação dos arquivos, foi realizada uma lógica para que, no momento em que o participante fizesse o \textit{upload} da sua solução, o arquivo fosse salvo no \textit{backend} seguindo uma lógica de ``\textit{id-Nome\_Sobrenome-nome\_do\_arquivo\_do\_participante.zip}''. Ao lado do nome de cada arquivo de cada participante, há o botão "Baixar", para realizar o \textit{download} da solução do desenvolvedor para as análises posteriores. O exemplo desta tela encontra-se na Figura \ref{fig:resultados_gerais_admin}. Com o intuito de manter o anonimato dos participantes do experimento, as imagens dos resultados do painel de adminsitrador foram editadas para ocultar os nomes dos desenvolvedores.
+
+\begin{figure}[ht]
+    \caption{Resultados}
+    \label{fig:resultados_gerais_admin}
+    \centering
+    \footnotesize
+    \begin{minipage}{.9\textwidth}
+        \centering
+        \fbox{\includegraphics[width=0.95\textwidth]{images/resultados_gerais_admin.png}}
+        \fonte{Elaborado pelo autor}
+    \end{minipage}
+\end{figure}
+\FloatBarrier
+
+As outras duas opções dos menus na barra lateral são para separar os resultados nos dois grupos, através da tela "Resultados Desenvolvedores sem IA" e "Resultados Desenvolvedores com IA". Os exemplos destas telas com os resultados do grupo sem IA e com IA, podem ser conferidos através das Figuras \ref{fig:resultados_sem_ia_admin} e \ref{fig:resultados_com_ia_admin}, respectivamente.
+
+\begin{figure}[ht]
+    \caption{Resultados Desenvolvedores sem IA}
+    \label{fig:resultados_sem_ia_admin}
+    \centering
+    \footnotesize
+    \begin{minipage}{.9\textwidth}
+        \centering
+        \fbox{\includegraphics[width=0.95\textwidth]{images/resultados_sem_ia_admin.png}}
+        \fonte{Elaborado pelo autor}
+    \end{minipage}
+\end{figure}
+\FloatBarrier
+
+\begin{figure}[ht]
+    \caption{Resultados Desenvolvedores com IA}
+    \label{fig:resultados_com_ia_admin}
+    \centering
+    \footnotesize
+    \begin{minipage}{.9\textwidth}
+        \centering
+        \fbox{\includegraphics[width=0.95\textwidth]{images/resultados_com_ia_admin.png}}
+        \fonte{Elaborado pelo autor}
+    \end{minipage}
+\end{figure}
+\FloatBarrier
+
+Todo o código-fonte da plataforma encontra-se disponível através do repositório\footnote{Repositório: \url{https://github.com/guifraga8/AI-Use-Productivity}} na plataforma \textit{GitHub}. Ao longo do desenvolvimento, foi utilizado o sistema de controle de versão \textit{Git}\footnote{\textit{Git}: \url{https://git-scm.com/}} para gerenciar todo o código-fonte.
 
 \section{Análise e Discussão dos Resultados}
 
@@ -410,59 +696,924 @@ Nesta seção são apresentadas a coleta e análise dos dados levantados a parti
 
 \subsection{Coleta de Dados}
 
-Lorem ipsum.
+Após a conclusão do desenvolvimento da plataforma \textit{web}, foram selecionados os participantes do experimento por conveniência, isto é, profissionais conhecidos pelo pesquisador que atuam no mercado de trabalho na área de desenvolvimento de \textit{software} e que se dispuseram a participar do desafio. Assim, o público-alvo foi definido de forma que todos os participantes fossem da área, porém ocupando diferentes cargos, como desenvolvedor \textit{front-end}, desenvolvedor \textit{back-end}, entre outros.
+
+Na sequência, foi realizado um sorteio com os participantes para garantir uma separação igualitária e justa entre os membros de cada grupo, denominando-os como integrantes do grupo sem IA ou do grupo com IA. Em seguida, foi encaminhada, via \textit{WhatsApp}, uma mensagem individual a cada participante com as primeiras instruções, reforçando detalhes importantes para a melhor participação e validação do experimento, de acordo com o grupo definido no sorteio. Ao final da mensagem, constava o \textit{link} de acesso à plataforma (\textit{link} do grupo sem IA\footnote{\textit{Link} do grupo sem IA: \url{https://ai-use-productivity.vercel.app/register/without_ai}} e \textit{link} do grupo com IA\footnote{\textit{Link} do grupo com IA: \url{https://ai-use-productivity.vercel.app/register/with_ai}}), direcionando o participante à tela do formulário inicial. As mensagens enviadas encontram-se no Apêndice C.
+
+Após a conclusão do desafio, isto é, após o envio da solução e finalização do mesmo (momento em que o banco de dados registrou o tempo total para a conclusão de cada desenvolvedor), cada participante foi direcionado a responder um questionário de \textit{feedback} (sendo um formulário\footnote{Formulário do grupo sem IA: \url{https://forms.gle/zdH8UPeheATCtQg67}} para o grupo sem IA e um formulário\footnote{Formulário do grupo com IA: \url{https://forms.gle/cgqkPAs93RTPuJRH9}} para o grupo com IA). Da primeira à sétima questão, o conteúdo foi igual para ambos os grupos, com o objetivo de avaliar aspectos como o nível de conhecimento da linguagem de programação (\textit{JavaScript}) proposta no desafio, a percepção individual quanto ao nível de dificuldade da atividade, o \textit{feedback} sobre a clareza do material disponibilizado para o desenvolvimento da solução, a percepção sobre o tempo demandado para resolução, além de verificar se o participante utiliza ferramentas de IA Generativa em suas atividades profissionais voltadas ao desenvolvimento de \textit{software} e, em caso afirmativo, quais.
+
+Da oitava à décima questão, o foco recaiu sobre a abordagem adotada pelos participantes para solucionar o desafio, sendo estas perguntas diferentes para o grupo sem IA e para o grupo com IA. No grupo sem IA, questionou-se quais ferramentas foram utilizadas para auxiliar na resolução, apresentando múltiplas opções que não envolviam ferramentas de IA. Também foi solicitado um breve relato sobre como o desafio foi abordado sem o uso de IA e, por fim, pediu-se que descrevessem, em poucas palavras, sua percepção individual acerca dos obstáculos enfrentados (se houveram), considerando a restrição ao uso de ferramentas de IA Generativa.
+
+Para o grupo com IA, as questões foram similares, porém adaptadas ao uso de ferramentas de IA Generativa na resolução do desafio. Assim, questionou-se quais ferramentas de IA foram utilizadas, foi solicitado igualmente um breve relato sobre como o desafio foi abordado com o auxílio de IA e, por fim, pediu-se que descrevessem, em poucas palavras, sua percepção individual quanto aos obstáculos enfrentados (se houveram) durante o desafio com o uso de IA Generativa.
+
+A décima primeira questão foi comum a ambos os grupos, tendo como finalidade coletar \textit{feedbacks} adicionais dos participantes a respeito do experimento como um todo. Essa pergunta foi incluída apenas para o encerramento do questionário e para fins de obtenção de sugestões voltadas à melhoria da plataforma ou do próprio experimento, visando contribuir com trabalhos futuros na mesma linha de pesquisa. Todas as questões encontram-se no Apêndice E, e suas respectivas respostas estão apresentadas no Apêndice F.
 
 \subsection{Avaliação dos Resultados}
 
-Lorem ipsum.
+A partir dos arquivos de soluções dos participantes, cada um foi analisado tomando como base os \textit{inputs} fornecidos nas imagens de exemplo dentro da plataforma e validando se o \textit{output} de cada cenário, na solução de cada desenvolvedor, correspondia ao resultado esperado. Ou seja, para cada solução, primeiramente foram realizados testes utilizando a interface \textit{HTML} do desafio, inserindo cada \textit{input} e verificando o resultado. Dessa forma, tornou-se possível identificar de maneira prática se os \textit{bugs} propositais do desafio haviam sido resolvidos. Os detalhes dos cenários de testes encontram-se disponíveis do Apêndice D.
+
+Para cada \textit{bug} pré-estabelecido, e ao executar os cenários de teste, foram atribuídas as classificações “Concluído”, “Concluído parcialmente” ou “Não concluído”, de modo a indicar se, na solução final do desenvolvedor, todos os ajustes necessários haviam sido realizados para atender à conclusão do desafio. Esse processo foi repetido minuciosamente, percorrendo todos os \textit{bugs} pré-estabelecidos, desenvolvedor por desenvolvedor.
+
+Nos cenários em que alguma operação não resultou no \textit{output} esperado, o trecho específico do código era analisado para determinar se o respectivo \textit{bug} havia sido concluído parcialmente ou não concluído de fato. Após essa análise, o código-fonte completo do arquivo \textit{main.js} do participante foi comparado, lado a lado, com o código-fonte completo do arquivo \textit{main.js} base do desafio (solucionado e funcional), a fim de realizar uma última análise minuciosa e verificar as alterações propostas por cada desenvolvedor, as decisões tomadas em aspectos específicos da lógica e reforçar a validação das classificações atribuídas a cada \textit{bug} anteriormente. Todos os resultados desta etapa de análise encontram-se no Apêndice H.
+
+Com base nos procedimentos executados, foi possível constatar que, analisando o escopo total de participantes, dos 6 desenvolvedores:
+
+\begin{itemize}[leftmargin=1cm, itemsep=0.1em, topsep=0.1em]
+    \item 2 (33,33\%) concluíram 100\% dos \textit{bugs};
+    \item 3 (50\%) concluíram 90\% dos \textit{bugs};
+    \begin{itemize}[leftmargin=1.2cm, itemsep=0.1em, topsep=0.1em]
+        \item 2 (66,67\%) concluíram 10\% dos \textit{bugs} parcialmente;
+        \item 1 (33,33\%) não concluiu 10\% dos \textit{bugs};
+    \end{itemize}
+    \item 1 (16,67\%) concluiu 70\% dos \textit{bugs};
+    \begin{itemize}[leftmargin=1.2cm, itemsep=0.1em, topsep=0.1em]
+        \item 10\% dos \textit{bugs} foram concluídos parcialmente;
+        \item 20\% não foram concluídos.
+    \end{itemize}
+\end{itemize}
+
+Fazendo uma média com as porcentagens de "Concluídos, Concluídos parcialmente e Não concluídos" de todos os participantes, nota-se que os desenvolvedores concluíram 90\% dos \textit{bugs}, 5\% concluídos parcialmente e 5\% não foram concluídos. E por fim, o tempo médio fornecido através da plataforma, para a conclusão do desafio considerando os 6 participantes, foi de 38 minutos e 40 segundos.
+
+Analisando somente os resultados do grupo sem IA, ou seja, no total de 3 participantes, constatou-se que:
+
+\begin{itemize}[leftmargin=1cm, itemsep=0.1em, topsep=0.1em]
+    \item 1 (33,33\%) concluiu 100\% dos \textit{bugs};
+    \item 2 (66,67\%) concluíram 90\% dos \textit{bugs};
+    \begin{itemize}[leftmargin=1.2cm, itemsep=0.1em, topsep=0.1em]
+        \item 1 (50\%) concluiu 10\% dos \textit{bugs} parcialmente;
+        \item 1 (50\%) não concluiu 10\% dos \textit{bugs}.
+    \end{itemize}
+\end{itemize}
+
+A partir da média com as porcentagens somente dos participantes do grupo sem IA, nota-se que os desenvolvedores concluíram 93,33\% dos \textit{bugs}, 3,33\% concluídos parcialmente e 3,33\% não foram concluídos. O tempo médio para a conclusão do desafio do grupo sem IA foi de 54 minutos e 4 segundos.
+
+Analisando somente os resultados do grupo com IA, igualmente no total de 3 participantes, constatou-se que:
+
+\begin{itemize}[leftmargin=1cm, itemsep=0.1em, topsep=0.1em]
+    \item 1 (33,33\%) concluiu 100\% dos \textit{bugs};
+    \item 1 (33,33\%) concluiu 90\% dos \textit{bugs};
+    \begin{itemize}[leftmargin=1.2cm, itemsep=0.1em, topsep=0.1em]
+        \item 10\% dos \textit{bugs} foram concluídos parcialmente;
+    \end{itemize}
+    \item 1 (33,33\%) concluiu 70\% dos \textit{bugs};
+    \begin{itemize}[leftmargin=1.2cm, itemsep=0.1em, topsep=0.1em]
+        \item 10\% dos \textit{bugs} foram concluídos parcialmente;
+        \item 20\% não foram concluídos.
+    \end{itemize}
+\end{itemize}
+
+A partir da média somente dos participantes do grupo com IA, nota-se que os desenvolvedores concluíram 86,67\% dos \textit{bugs}, 6,67\% concluídos parcialmente e 6,67\% não foram concluídos. O tempo médio para a conclusão do desafio do grupo com IA foi de 23 minutos e 17 segundos.
+
+A Tabela \ref{tab:resumo_resultados_participantes} foi elaborada para trazer os resultados individuais de cada participante, de forma resumida, para que seja possível exemplificar os pontos relevantes para as conclusões deste experimento.
+
+\begin{table}[ht]
+    \caption{Resumo dos resultados dos participantes}
+    \label{tab:resumo_resultados_participantes}
+    \centering%
+    \footnotesize
+    \begin{tabularx}{\textwidth}{XXXXX}
+        \toprule
+        \textbf{Participante} & \textbf{Cargo} & \textbf{Grupo} & \textbf{Resolução dos \textit{bugs}} & \textbf{Tempo total para conclusão} \\
+        \midrule
+        Desenvolvedor 1 & \textit{Senior Frontend Engineer} & sem IA & 90\% concluído, 10\% concluído parcialmente & 45m 42s \\
+        \midrule
+        Desenvolvedor 2 & Desenvolvedor \textit{front-end} & sem IA & 100\% concluído & 39m 47s \\
+        \midrule
+        Desenvolvedor 3 & \textit{Back End Developer} & sem IA & 90\% concluído, 10\% não concluído & 1h 16m 43s \\
+        \midrule
+        Desenvolvedor 4 & \textit{Backend Developer} & com IA & 90\% concluído, 10\% concluído parcialmente & 11m 5s \\
+        \midrule
+        Desenvolvedor 5 & \textit{Software QA Engineer} & com IA & 70\% concluído, 10\% concluído parcialmente, 20\% não concluído & 14m 31s \\
+        \midrule
+        Desenvolvedor 6 & \textit{Backend developer} & com IA & 100\% concluído & 44m 15s \\
+        \bottomrule
+    \end{tabularx}
+    \fonte{Elaborado pelo autor}
+\end{table}
+\FloatBarrier
+
+Com relação aos resultados dos questionários de \textit{feedback} solicitados aos participantes, pontua-se alguns dados interessantes, onde dos 6 desenvolvedores:
+
+\begin{itemize}[leftmargin=1cm, itemsep=0.1em, topsep=0.1em]
+    \item 6 (100\%) afirmaram já possuirem conhecimento ou experiência na linguagem \textit{JavaScript};
+    \begin{itemize}[leftmargin=1.2cm, itemsep=0.1em, topsep=0.1em]
+        \item 1 (16,67\%) com nível de conhecimento muito báscio;
+        \item 1 (16,67\%) com nível de conhecimento básico;
+        \item 3 (50\%) com nível de conhecimento avançado;
+        \item 1 (16,67\%) com nível de muito avançado;
+    \end{itemize}
+    \item 5 (83,33\%) consideraram o desafio como fácil;
+    \begin{itemize}[leftmargin=1.2cm, itemsep=0.1em, topsep=0.1em]
+        \item 1 (16,67\%) considerou como neutro;
+    \end{itemize}
+    \item 3 (50\%) consideraram a clareza das informações do material entregue para a solução como razoável;
+    \begin{itemize}[leftmargin=1.2cm, itemsep=0.1em, topsep=0.1em]
+        \item 2 (33,33\%) consideraram como claro;
+        \item 1 (16,67\%) considerou como muito claro;
+    \end{itemize}
+    \item 3 (50\%) consideraram o tamanho do desafio, com base no tempo levado para resolver, como adequado/na medida;
+    \begin{itemize}[leftmargin=1.2cm, itemsep=0.1em, topsep=0.1em]
+        \item 1 (16,67\%) considerou como muito rápido;
+        \item 1 (16,67\%) considerou como rápido;
+        \item 1 (16,67\%) considerou como demorado;
+    \end{itemize}
+    \item 6 (100\%) afirmaram utilizarem ferramentas de IA Generativa no dia a dia profissional relacionadas ao desenvolvimento de \textit{software};
+    \begin{itemize}[leftmargin=1.2cm, itemsep=0.1em, topsep=0.1em]
+        \item 3 (50\%) utilizam o \textit{ChatGPT};
+        \item 2 (33,33\%) utilizam o \textit{GitHub Copilot};
+        \item 1 (16,67\%) utiliza o \textit{Gemini};
+        \item 3 (50\%) utilizam o \textit{Microsoft Copilot};
+        \item 1 (16,67\%) utiliza o \textit{Amazon Q};
+        \item 1 (16,67\%) utiliza o \textit{Cline};
+        \item 1 (16,67\%) utiliza \textit{software} de autoria da empresa em que trabalha;
+        \item 1 (16,67\%) utiliza o \textit{Windsurf};
+        \item 1 (16,67\%) utiliza o \textit{Claude};
+    \end{itemize}
+\end{itemize}
+
+Outras informações relevantes obtidas através dos questionários foi de que, dos membros do grupo sem IA, os 3 desenvolvedores (100\%) utilizaram do conhecimento prévio para a solução do desafio e destes apenas 1 (16,67\%) utilizou também da documentação oficial da linguagem para ajudá-lo. Dos membros do grupo com IA, os 3 desenvolvedores fizeram uso das ferramentas de IA que estão acostumados a utilizarem, sendo elas o \textit{ChatGPT} (66,67\%), \textit{Microsoft Copilot} (33,33\%) e \textit{Claude} (33,33\%).
+
+Por fim, os resultados completos dos questionários de \textit{feedback} encontram-se disponíveis no Apêndice F.
 
 \section{Considerações Finais e Trabalhos Futuros}
 
-Lorem ipsum.
+É inegável que, diante da rápida e constante evolução das ferramentas de Inteligência Artificial Generativa, o profissional da área de desenvolvimento de \textit{software} precisa adaptar-se ao uso dessas tecnologias, buscando maior produtividade e desempenho em suas atividades. Considerando o tempo médio de resolução do desafio técnico proposto, observou-se que o grupo que utilizou ferramentas de IA levou, em média, menos da metade do tempo em comparação ao grupo sem o uso dessas ferramentas.
+
+Esse resultado evidencia o ganho significativo de otimização de tempo e produtividade na resolução de problemas. Entretanto, um ponto relevante observado foi que um dos desenvolvedores do grupo sem IA conseguiu concluir todas as etapas do desafio em tempo inferior ao de um participante do grupo com IA que também completou integralmente a tarefa. Isso demonstra que, apesar de o uso da IA ter contribuído para uma execução mais rápida, nem todos os participantes com acesso à ferramenta conseguiram atingir 100\% do resultado esperado.
+
+Da mesma forma, verificou-se que o desenvolvedor do grupo com IA que solucionou completamente o desafio fez uso consciente e criterioso da ferramenta, analisando sua própria solução de forma robusta e não dependendo exclusivamente das respostas fornecidas pela IA. Essa observação foi reforçada pelas respostas do formulário de avaliação, nas quais o participante relatou que utilizou a IA como apoio para o raciocínio e não como substituto do pensamento crítico.
+
+Por outro lado, alguns participantes do grupo sem IA aparentemente não realizaram uma verificação detalhada de suas soluções. Assim, destaca-se a importância de que, mesmo com o auxílio de ferramentas de IA, o desenvolvedor mantenha uma postura analítica e revisora, garantindo que o resultado final atenda integralmente aos requisitos propostos, com clareza e qualidade.
+
+Ressalta-se, portanto, que as ferramentas de IA Generativas são grandes aliadas do desenvolvedor moderno, desde que utilizadas de forma equilibrada. O uso responsável dessas tecnologias deve reforçar e, não substituir, o conhecimento técnico e o senso crítico do profissional. Afinal, trata-se de ferramentas ainda em processo de evolução, mesmo que esse avanço ocorra em ritmo acelerado.
+
+Essa relação de complementaridade entre desenvolvedor e IA Generativa também ficou evidente nas respostas dos participantes do grupo sem IA, que apontaram como principais desafios a ausência de recursos como o \textit{autocomplete} e a dificuldade em realizar pesquisas e revisões de código sem o suporte de IA. Um dos desenvolvedores, inclusive, destacou que, antes do experimento, acreditava ser plenamente capaz de desenvolver sem o uso de IA, mas, após a experiência, percebeu o quanto o processo se torna mais demorado e trabalhoso sem essas ferramentas.
+
+Esses relatos reforçam a percepção de que as ferramentas de IA Generativas se tornaram parte essencial do cotidiano dos desenvolvedores, contribuindo diretamente para a performance, a otimização de tempo e a praticidade em tarefas rotineiras. Contudo, é fundamental que seu uso seja feito de forma consciente, evitando dependências que possam limitar a autonomia e o raciocínio do profissional.
+
+Em relação ao experimento realizado, os \textit{feedbacks} dos participantes indicaram a necessidade de maior clareza na descrição do desafio técnico. Sugere-se que, em futuras aplicações, os exemplos de \textit{inputs} e \textit{outputs} sejam fornecidos em formato textual, e não apenas em imagens, permitindo que os desenvolvedores possam copiar e testar diretamente as informações, evitando erros e retrabalhos.
+
+Por fim, destaca-se que seria relevante repetir o experimento com uma amostra maior de participantes, possibilitando uma análise mais ampla e representativa sobre o impacto real do uso e da ausência de ferramentas de IA Generativa no desempenho de desenvolvedores de \textit{software}. Outra sugestão de melhoria para aplicações futuras seria a de, ao realizar um experimento desse tipo, mensurar não apenas o tempo e a capacidade de resolução do desafio técnico, mas também aspectos técnicos relacionados à qualidade das soluções entregues. Isso incluiria critérios como a clareza e organização do código, nível de otimização, boas práticas aplicadas, modularização, bem como a análise de complexidade (melhor caso, pior caso e caso médio). Dessa forma, seria possível realizar uma comparação mais abrangente entre os grupos que utilizaram ferramentas de IA e aqueles que não utilizaram, permitindo avaliar não apenas a produtividade, mas também a qualidade técnica das soluções geradas.
+
+Como proposta para trabalhos futuros, além das sugestões acima, seria interessante aplicar novos desafios técnicos envolvendo grupos com e sem IA, em que os participantes com IA não necessariamente sejam desenvolvedores ativos, mas profissionais da área de tecnologia em diferentes funções. Dessa forma, seria possível avaliar o impacto do uso de IA também em profissionais com conhecimento básico em lógica e programação, mas com perfis distintos, ampliando o entendimento sobre o potencial e os limites da IA Generativa em diferentes contextos de atuação.
 
 \bibliography{references}
 
 \appendix
 \section{DIAGRAMA ER DO BANCO DE DADOS}
 
-Lorem ipsum.
+\renewcommand{\thefigure}{A.\arabic{figure}}
+\setcounter{figure}{0}
+
+\begin{figure}[ht]
+    \caption{Modelo Entidade Relacional da aplicação}
+    \vspace{1em}
+    \label{fig:diagrama_er_banco}
+    \centering%
+    \footnotesize
+	\begin{minipage}{.9\textwidth}
+		\includegraphics[width=\textwidth]{images/diagrama_er_banco.png}
+		\fonte{Elaborado pelo autor}
+	\end{minipage}
+\end{figure}
+\FloatBarrier
 
 \section{TELAS DA APLICAÇÃO}
-\label{sec:telas_da_aplicacao}
 
-Lorem ipsum.
+\renewcommand{\thefigure}{B.\arabic{figure}}
+\setcounter{figure}{0}
 
-\section{TEXTO TEXTO}
+\begin{figure}[ht]
+    \caption{Exemplo 1 do desafio}
+    \label{fig:exemplo1}
+    \centering
+    \footnotesize
+    \begin{minipage}{.9\textwidth}
+        \centering
+        \fbox{\includegraphics[width=0.95\textwidth]{images/exemplo1.png}}
+        \fonte{Elaborado pelo autor}
+    \end{minipage}
+\end{figure}
+\FloatBarrier
 
-Lorem ipsum.
+\begin{figure}[ht]
+    \caption{Exemplo 2 do desafio}
+    \label{fig:exemplo2}
+    \centering
+    \footnotesize
+    \begin{minipage}{.9\textwidth}
+        \centering
+        \fbox{\includegraphics[width=0.95\textwidth]{images/exemplo2.png}}
+        \fonte{Elaborado pelo autor}
+    \end{minipage}
+\end{figure}
+\FloatBarrier
+
+\begin{figure}[ht]
+    \caption{Exemplo 2.1 do desafio}
+    \label{fig:exemplo2_1}
+    \centering
+    \footnotesize
+    \begin{minipage}{.9\textwidth}
+        \centering
+        \fbox{\includegraphics[width=0.95\textwidth]{images/exemplo2.1.png}}
+        \fonte{Elaborado pelo autor}
+    \end{minipage}
+\end{figure}
+\FloatBarrier
+
+\begin{figure}[ht]
+    \caption{Exemplo 3 do desafio}
+    \label{fig:exemplo3}
+    \centering
+    \footnotesize
+    \begin{minipage}{.9\textwidth}
+        \centering
+        \fbox{\includegraphics[width=0.95\textwidth]{images/exemplo3.png}}
+        \fonte{Elaborado pelo autor}
+    \end{minipage}
+\end{figure}
+\FloatBarrier
+
+\begin{figure}[ht]
+    \caption{Exemplo 3.1 do desafio}
+    \label{fig:exemplo3_1}
+    \centering
+    \footnotesize
+    \begin{minipage}{.9\textwidth}
+        \centering
+        \fbox{\includegraphics[width=0.95\textwidth]{images/exemplo3.1.png}}
+        \fonte{Elaborado pelo autor}
+    \end{minipage}
+\end{figure}
+\FloatBarrier
+
+\begin{figure}[ht]
+    \caption{Exemplo 4 do desafio}
+    \label{fig:exemplo4}
+    \centering
+    \footnotesize
+    \begin{minipage}{.9\textwidth}
+        \centering
+        \fbox{\includegraphics[width=0.95\textwidth]{images/exemplo4.png}}
+        \fonte{Elaborado pelo autor}
+    \end{minipage}
+\end{figure}
+\FloatBarrier
+
+\begin{figure}[ht]
+    \caption{Exemplo 4.1 do desafio}
+    \label{fig:exemplo4_1}
+    \centering
+    \footnotesize
+    \begin{minipage}{.9\textwidth}
+        \centering
+        \fbox{\includegraphics[width=0.95\textwidth]{images/exemplo4.1.png}}
+        \fonte{Elaborado pelo autor}
+    \end{minipage}
+\end{figure}
+\FloatBarrier
+
+\begin{figure}[ht]
+    \caption{Editar arquivo e finalizar desafio}
+    \label{fig:arquivo_salvo_finalizar_desafio}
+    \centering
+    \footnotesize
+    \begin{minipage}{.9\textwidth}
+        \centering
+        \fbox{\includegraphics[width=0.95\textwidth]{images/arquivo_salvo_finalizar_desafio.png}}
+        \fonte{Elaborado pelo autor}
+    \end{minipage}
+\end{figure}
+\FloatBarrier
+
+\section{INSTRUÇÕES ENVIADAS AOS PARTICIPANTES VIA \textit{WHATSAPP}}
+
+\renewcommand{\thefigure}{C.\arabic{figure}}
+\setcounter{figure}{0}
+
+\begin{figure}[ht]
+    \caption{Instruções enviadas via \textit{WhatsApp} para o grupo sem IA}
+    \label{fig:instrucoes_sem_ia}
+    \centering
+    \footnotesize
+    \begin{minipage}{.9\textwidth}
+        \centering
+        \fbox{\includegraphics[width=0.95\textwidth]{images/instrucoes_sem_ia.png}}
+        \fonte{Elaborado pelo autor}
+    \end{minipage}
+\end{figure}
+\FloatBarrier
+
+\begin{figure}[ht]
+    \caption{Instruções enviadas via \textit{WhatsApp} para o grupo com IA}
+    \label{fig:instrucoes_com_ia}
+    \centering
+    \footnotesize
+    \begin{minipage}{.9\textwidth}
+        \centering
+        \fbox{\includegraphics[width=0.95\textwidth]{images/instrucoes_com_ia.png}}
+        \fonte{Elaborado pelo autor}
+    \end{minipage}
+\end{figure}
+\FloatBarrier
 
 \section{CENÁRIOS DE TESTES}
 
-Lorem ipsum.
+O desenvolvedor deveria replicar os \textit{inputs} exibidos nas imagens de exemplo, que representavam os resultados esperados no \textit{output}. Estes foram os \textit{inputs} aplicados ao testes na interface \textit{HTML} e comparado com o código-fonte base funcional para verificar se os resultados estavam coerentes.
 
-\section{TEXTO TEXTO}
+\textbf{Cenário 1}
 
-Lorem ipsum.
+\begin{itemize}[leftmargin=1cm, itemsep=0.1em, topsep=0.1em]
+    \item \textit{input}
+    \begin{itemize}[leftmargin=1.2cm, itemsep=0.1em, topsep=0.1em]
+        120kg geladeira
+    \end{itemize}
+    \item \textit{output}
+    \begin{itemize}[leftmargin=1.2cm, itemsep=0.1em, topsep=0.1em]
+        Van 1:\\
+        120kg geladeira\\
+        
+        \\Capacidade total: 3000kg\\
+        Peso total: 120kg\\
+        Espaço de sobra: 2880kg\\
+        Percentual carregado: 4.00\%
+    \end{itemize}
+\end{itemize}
 
-\section{TEXTO TEXTO}
+\textbf{Cenário 2}
 
-Lorem ipsum.
+\begin{itemize}[leftmargin=1cm, itemsep=0.1em, topsep=0.1em]
+    \item \textit{input}
+    \begin{itemize}[leftmargin=1.2cm, itemsep=0.1em, topsep=0.1em]
+        35kg Item 1\\
+        1000KG Item 2\\
+        5000Kg Item 3
+    \end{itemize}
+    \item \textit{output}
+    \begin{itemize}[leftmargin=1.2cm, itemsep=0.1em, topsep=0.1em]
+        Moto 1:\\
+        35kg Item 1\\
+        Van 1:\\ 
+        1000kg Item 2\\
+        Kombi 1:\\
+        5000kg Item 3\\
 
-\section{RESPOSTAS DO QUESTIONÁRIO}
+        \\Capacidade total: 8045kg\\
+        Peso total: 6035kg\\
+        Espaço de sobra: 2010kg\\
+        Percentual carregado: 75.02\%
+    \end{itemize}
+\end{itemize}
 
-Lorem ipsum.
+\textbf{Cenário 3}
 
-\section{REQUISITOS FUNCIONAIS DA APLICAÇÃO}
+\begin{itemize}[leftmargin=1cm, itemsep=0.1em, topsep=0.1em]
+    \item \textit{input}
+    \begin{itemize}[leftmargin=1.2cm, itemsep=0.1em, topsep=0.1em]
+        vazio
+    \end{itemize}
+    \item \textit{output}
+    \begin{itemize}[leftmargin=1.2cm, itemsep=0.1em, topsep=0.1em]
+        Nenhum item válido para processar.
+    \end{itemize}
+\end{itemize}
 
-Lorem ipsum.
+\textbf{Cenário 4}
 
-\section{TEXTO TEXTO}
+\begin{itemize}[leftmargin=1cm, itemsep=0.1em, topsep=0.1em]
+    \item \textit{input}
+    \begin{itemize}[leftmargin=1.2cm, itemsep=0.1em, topsep=0.1em]
+        120abc abc
+    \end{itemize}
+    \item \textit{output}
+    \begin{itemize}[leftmargin=1.2cm, itemsep=0.1em, topsep=0.1em]
+        Nenhum item válido para processar.
+    \end{itemize}
+\end{itemize}
 
-Lorem ipsum.
+\textbf{Cenário 5}
 
-\annex
-\section{NOME DO ANEXO}
+\begin{itemize}[leftmargin=1cm, itemsep=0.1em, topsep=0.1em]
+    \item \textit{input}
+    \begin{itemize}[leftmargin=1.2cm, itemsep=0.1em, topsep=0.1em]
+        500 kg Item 1\\
+        2000 KG Item 2\\
+        10000kG Item 3\\
+        12000kg Item 4
+    \end{itemize}
+    \item \textit{output}
+    \begin{itemize}[leftmargin=1.2cm, itemsep=0.1em, topsep=0.1em]
+        Van 1:\\
+        500kg Item 1\\
+        2000kg Item 2\\
+        Caminhão 1:\\
+        10000kg Item 3\\
+        Caminhão 2:\\
+        12000kg Item 4\\
 
-Lorem ipsum.
+        \\Capacidade total: 27000kg\\
+        Peso total: 24500kg\\
+        Espaço de sobra: 2500kg\\
+        Percentual carregado: 90.74\%
+    \end{itemize}
+\end{itemize}
+
+\textbf{Cenário 6 -- Melhoria/opcional}
+
+\begin{itemize}[leftmargin=1cm, itemsep=0.1em, topsep=0.1em]
+    \item \textit{input}
+    \begin{itemize}[leftmargin=1.2cm, itemsep=0.1em, topsep=0.1em]
+        15000 kg Item 1\\
+    \end{itemize}
+    \item \textit{output}
+    \begin{itemize}[leftmargin=1.2cm, itemsep=0.1em, topsep=0.1em]
+        Nenhum item válido para processar (ou algo similar, mais descritivo, por exemplo, mostrando que esta carga não comporta em nenhum dos tipos de veículos).
+    \end{itemize}
+\end{itemize}
+
+\section{QUESTIONÁRIOS DE AVALIAÇÃO DO MODELO}
+
+\renewcommand{\thefigure}{E.\arabic{figure}}
+\setcounter{figure}{0}
+
+\begin{figure}[ht]
+    \caption{Questão 1 e 2 do formulário final para todos os participantes}
+    \label{fig:questao1_2_geral}
+    \centering
+    \footnotesize
+    \begin{minipage}{.9\textwidth}
+        \centering
+        \fbox{\includegraphics[width=0.95\textwidth]{images/questao1_2_geral.png}}
+        \fonte{Elaborado pelo autor}
+    \end{minipage}
+\end{figure}
+\FloatBarrier
+
+\begin{figure}[ht]
+    \caption{Questão 3 e 4 do formulário final para todos os participantes}
+    \label{fig:questao3_4_geral}
+    \centering
+    \footnotesize
+    \begin{minipage}{.9\textwidth}
+        \centering
+        \fbox{\includegraphics[width=0.95\textwidth]{images/questao3_4_geral.png}}
+        \fonte{Elaborado pelo autor}
+    \end{minipage}
+\end{figure}
+\FloatBarrier
+
+\begin{figure}[ht]
+    \caption{Questão 5 e 6 do formulário final para todos os participantes}
+    \label{fig:questao5_6_geral}
+    \centering
+    \footnotesize
+    \begin{minipage}{.9\textwidth}
+        \centering
+        \fbox{\includegraphics[width=0.95\textwidth]{images/questao5_6_geral.png}}
+        \fonte{Elaborado pelo autor}
+    \end{minipage}
+\end{figure}
+\FloatBarrier
+
+\begin{figure}[ht]
+    \caption{Questão 7 do formulário final para todos os participantes}
+    \label{fig:questao7_geral}
+    \centering
+    \footnotesize
+    \begin{minipage}{.9\textwidth}
+        \centering
+        \fbox{\includegraphics[width=0.95\textwidth]{images/questao7_geral.png}}
+        \fonte{Elaborado pelo autor}
+    \end{minipage}
+\end{figure}
+\FloatBarrier
+
+\begin{figure}[ht]
+    \caption{Questão 8, 9 e 10 do formulário final para todos os membros do grupo sem IA}
+    \label{fig:questao8_9_10_sem_ia}
+    \centering
+    \footnotesize
+    \begin{minipage}{.9\textwidth}
+        \centering
+        \fbox{\includegraphics[width=0.95\textwidth]{images/questao8_9_10_sem_ia.png}}
+        \fonte{Elaborado pelo autor}
+    \end{minipage}
+\end{figure}
+\FloatBarrier
+
+\begin{figure}[ht]
+    \caption{Questão 8, 9 e 10 do formulário final para todos os membros do grupo com IA}
+    \label{fig:questao8_9_10_com_ia}
+    \centering
+    \footnotesize
+    \begin{minipage}{.9\textwidth}
+        \centering
+        \fbox{\includegraphics[width=0.95\textwidth]{images/questao8_9_10_com_ia.png}}
+        \fonte{Elaborado pelo autor}
+    \end{minipage}
+\end{figure}
+\FloatBarrier
+
+\begin{figure}[ht]
+    \caption{Questão 11 do formulário final para todos os participantes}
+    \label{fig:questao11_geral}
+    \centering
+    \footnotesize
+    \begin{minipage}{.9\textwidth}
+        \centering
+        \fbox{\includegraphics[width=0.95\textwidth]{images/questao11_geral.png}}
+        \fonte{Elaborado pelo autor}
+    \end{minipage}
+\end{figure}
+\FloatBarrier
+
+\section{RESPOSTAS DO FORMULÁRIO}
+
+\renewcommand{\thefigure}{F.\arabic{figure}}
+\setcounter{figure}{0}
+
+\renewcommand{\thetable}{F.\arabic{table}}
+\setcounter{table}{0}
+
+Os gráficos e quadros abaixo representam as respostas completas do questionário, dos grupos sem IA e com IA, respectivamente. Os Gráficos \ref{graf:resposta1_sem_ia} e \ref{graf:resposta1_com_ia} referem-se à questão 1. Os Gráficos \ref{graf:resposta2_sem_ia} e \ref{graf:resposta2_com_ia} são as respostas da questão 2. Os Gráficos \ref{graf:resposta3_sem_ia} e \ref{graf:resposta3_com_ia} referem-se à questão 3. Os Gráficos \ref{graf:resposta4_sem_ia} e \ref{graf:resposta4_com_ia} são da questão 4. Os Gráficos \ref{graf:resposta5_sem_ia} e \ref{graf:resposta5_com_ia} são referentes à questão 5. Os Gráficos \ref{graf:resposta6_sem_ia} e \ref{graf:resposta6_com_ia} tratam-se da questão 6. Os Gráfico \ref{graf:resposta7_sem_ia} e \ref{graf:resposta7_com_ia} referem-se à questão 7. Os Gráficos \ref{graf:resposta8_sem_ia} e \ref{graf:resposta8_com_ia} são as repostas da questão 8.
+
+As Tabelas \ref{tab:questao9_sem_ia} e \ref{tab:questao9_com_ia} referem-se à questão 9. As Tabelas \ref{tab:questao10_sem_ia} e \ref{tab:questao10_com_ia} são as respostas da questão 10. Por fim, as tabelas \ref{tab:questao11_sem_ia} e \ref{tab:questao11_com_ia} tratam-se da questão 11.
+
+\begin{figure}[ht]
+    \caption{Respotas da questão 1 de todos do grupo sem IA}
+    \label{graf:resposta1_sem_ia}
+    \centering
+    \footnotesize
+    \begin{minipage}{.9\textwidth}
+        \centering
+        \fbox{\includegraphics[width=0.95\textwidth]{images/resposta1_sem_com_ia.png}}
+        \fonte{Elaborado pelo autor}
+    \end{minipage}
+\end{figure}
+\FloatBarrier
+
+\begin{figure}[ht]
+    \caption{Respotas da questão 1 de todos do grupo com IA}
+    \label{graf:resposta1_com_ia}
+    \centering
+    \footnotesize
+    \begin{minipage}{.9\textwidth}
+        \centering
+        \fbox{\includegraphics[width=0.95\textwidth]{images/resposta1_sem_com_ia.png}}
+        \fonte{Elaborado pelo autor}
+    \end{minipage}
+\end{figure}
+\FloatBarrier
+
+\begin{figure}[ht]
+    \caption{Respotas da questão 2 de todos do grupo sem IA}
+    \label{graf:resposta2_sem_ia}
+    \centering
+    \footnotesize
+    \begin{minipage}{.9\textwidth}
+        \centering
+        \fbox{\includegraphics[width=0.95\textwidth]{images/resposta2_sem_ia.png}}
+        \fonte{Elaborado pelo autor}
+    \end{minipage}
+\end{figure}
+\FloatBarrier
+
+\begin{figure}[ht]
+    \caption{Respotas da questão 2 de todos do grupo com IA}
+    \label{graf:resposta2_com_ia}
+    \centering
+    \footnotesize
+    \begin{minipage}{.9\textwidth}
+        \centering
+        \fbox{\includegraphics[width=0.95\textwidth]{images/resposta2_com_ia.png}}
+        \fonte{Elaborado pelo autor}
+    \end{minipage}
+\end{figure}
+\FloatBarrier
+
+\begin{figure}[ht]
+    \caption{Respotas da questão 3 de todos do grupo sem IA}
+    \label{graf:resposta3_sem_ia}
+    \centering
+    \footnotesize
+    \begin{minipage}{.9\textwidth}
+        \centering
+        \fbox{\includegraphics[width=0.95\textwidth]{images/resposta3_sem_ia.png}}
+        \fonte{Elaborado pelo autor}
+    \end{minipage}
+\end{figure}
+\FloatBarrier
+
+\begin{figure}[ht]
+    \caption{Respotas da questão 3 de todos do grupo com IA}
+    \label{graf:resposta3_com_ia}
+    \centering
+    \footnotesize
+    \begin{minipage}{.9\textwidth}
+        \centering
+        \fbox{\includegraphics[width=0.95\textwidth]{images/resposta3_com_ia.png}}
+        \fonte{Elaborado pelo autor}
+    \end{minipage}
+\end{figure}
+\FloatBarrier
+
+\begin{figure}[ht]
+    \caption{Respotas da questão 4 de todos do grupo sem IA}
+    \label{graf:resposta4_sem_ia}
+    \centering
+    \footnotesize
+    \begin{minipage}{.9\textwidth}
+        \centering
+        \fbox{\includegraphics[width=0.95\textwidth]{images/resposta4_sem_ia.png}}
+        \fonte{Elaborado pelo autor}
+    \end{minipage}
+\end{figure}
+\FloatBarrier
+
+\begin{figure}[ht]
+    \caption{Respotas da questão 4 de todos do grupo com IA}
+    \label{graf:resposta4_com_ia}
+    \centering
+    \footnotesize
+    \begin{minipage}{.9\textwidth}
+        \centering
+        \fbox{\includegraphics[width=0.95\textwidth]{images/resposta4_com_ia.png}}
+        \fonte{Elaborado pelo autor}
+    \end{minipage}
+\end{figure}
+\FloatBarrier
+
+\begin{figure}[ht]
+    \caption{Respotas da questão 5 de todos do grupo sem IA}
+    \label{graf:resposta5_sem_ia}
+    \centering
+    \footnotesize
+    \begin{minipage}{.9\textwidth}
+        \centering
+        \fbox{\includegraphics[width=0.95\textwidth]{images/resposta5_sem_ia.png}}
+        \fonte{Elaborado pelo autor}
+    \end{minipage}
+\end{figure}
+\FloatBarrier
+
+\begin{figure}[ht]
+    \caption{Respotas da questão 5 de todos do grupo com IA}
+    \label{graf:resposta5_com_ia}
+    \centering
+    \footnotesize
+    \begin{minipage}{.9\textwidth}
+        \centering
+        \fbox{\includegraphics[width=0.95\textwidth]{images/resposta5_com_ia.png}}
+        \fonte{Elaborado pelo autor}
+    \end{minipage}
+\end{figure}
+\FloatBarrier
+
+\begin{figure}[ht]
+    \caption{Respotas da questão 6 de todos do grupo sem IA}
+    \label{graf:resposta6_sem_ia}
+    \centering
+    \footnotesize
+    \begin{minipage}{.9\textwidth}
+        \centering
+        \fbox{\includegraphics[width=0.95\textwidth]{images/resposta6_sem_com_ia.png}}
+        \fonte{Elaborado pelo autor}
+    \end{minipage}
+\end{figure}
+\FloatBarrier
+
+\begin{figure}[ht]
+    \caption{Respotas da questão 6 de todos do grupo com IA}
+    \label{graf:resposta6_com_ia}
+    \centering
+    \footnotesize
+    \begin{minipage}{.9\textwidth}
+        \centering
+        \fbox{\includegraphics[width=0.95\textwidth]{images/resposta6_sem_com_ia.png}}
+        \fonte{Elaborado pelo autor}
+    \end{minipage}
+\end{figure}
+\FloatBarrier
+
+\begin{figure}[ht]
+    \caption{Respotas da questão 7 de todos do grupo sem IA}
+    \label{graf:resposta7_sem_ia}
+    \centering
+    \footnotesize
+    \begin{minipage}{.9\textwidth}
+        \centering
+        \fbox{\includegraphics[width=0.95\textwidth]{images/resposta7_sem_ia.png}}
+        \fonte{Elaborado pelo autor}
+    \end{minipage}
+\end{figure}
+\FloatBarrier
+
+\begin{figure}[ht]
+    \caption{Respotas da questão 7 de todos do grupo com IA}
+    \label{graf:resposta7_com_ia}
+    \centering
+    \footnotesize
+    \begin{minipage}{.9\textwidth}
+        \centering
+        \fbox{\includegraphics[width=0.95\textwidth]{images/resposta7_com_ia.png}}
+        \fonte{Elaborado pelo autor}
+    \end{minipage}
+\end{figure}
+\FloatBarrier
+
+\begin{figure}[ht]
+    \caption{Respotas da questão 8 de todos do grupo sem IA}
+    \label{graf:resposta8_sem_ia}
+    \centering
+    \footnotesize
+    \begin{minipage}{.9\textwidth}
+        \centering
+        \fbox{\includegraphics[width=0.95\textwidth]{images/resposta8_sem_ia.png}}
+        \fonte{Elaborado pelo autor}
+    \end{minipage}
+\end{figure}
+\FloatBarrier
+
+\begin{figure}[ht]
+    \caption{Respotas da questão 8 de todos do grupo com IA}
+    \label{graf:resposta8_com_ia}
+    \centering
+    \footnotesize
+    \begin{minipage}{.9\textwidth}
+        \centering
+        \fbox{\includegraphics[width=0.95\textwidth]{images/resposta8_com_ia.png}}
+        \fonte{Elaborado pelo autor}
+    \end{minipage}
+\end{figure}
+\FloatBarrier
+
+\begin{table}[ht]
+    \caption{Respostas da questão 9 de todos do grupo sem IA}
+    \label{tab:questao9_sem_ia}
+    \centering%
+    \footnotesize
+    \begin{tabularx}{\textwidth}{lXXXX}
+        \toprule
+        \textbf{Participante} & \textbf{Em poucas palavras, como você abordou a solução do desafio sem usar ferramentas de IA Generativa?} \\
+        \midrule
+        Desenvolvedor 1 & Primeiramente, tentei achar os bugs. Para isso, explorei a aplicação já pronta. Tendo isso em vista, fui encontrando a raiz dos problemas e resolvendo. Usei o debugger do navegador para entender quais os problemas com os dados. \\
+        \midrule
+        Desenvolvedor 2 & Realizei alguns testes e verifiquei o resultado final. A partir daí analisei o código e ajustei conforme fui debugando. \\
+        \midrule
+        Desenvolvedor 3 & Fui analisando os resultados e revisando o código no VSCode conforme eu encontrava os erros neles \\
+        \bottomrule
+    \end{tabularx}
+    \fonte{Elaborado pelo autor}
+\end{table}
+\FloatBarrier
+
+\begin{table}[ht]
+    \caption{Respostas da questão 9 de todos do grupo com IA}
+    \label{tab:questao9_com_ia}
+    \centering%
+    \footnotesize
+    \begin{tabularx}{\textwidth}{lXXXX}
+        \toprule
+        \textbf{Participante} & \textbf{Em poucas palavras, como você abordou a solução do desafio sem usar ferramentas de IA Generativa?} \\
+        \midrule
+        Desenvolvedor 4 & Basicamente copiou os prints de output esperados e a descrição do desafio. \\
+        \midrule
+        Desenvolvedor 5 & Me fiz de leigo. Mandei a IA ler todo o projeto, onde ela ja encontrou e corrigiu bugs, e depois mandei o deafio e pedi pra ele ajustar o projeto de acordo. No final, pedi pra ele testar e me mandar evidencias que está correto. No final, fiz testes exploratorios manuais e entreguei o projeto. \\
+        \midrule
+        Desenvolvedor 6 & De início eu tentei fazer tudo sozinho, baseado na leitura do código e outputs do programa. Mas, depois de acreditar ter resolvido tudo e ainda assim ver alguns bugs, submeti o código inteiro ao chatGPT, que prontamente já me sugeriu alguns fixes antes de eu pedir qualquer coisa.
+
+        Após isso, somente um bug sobrou, onde agora submeti o input e falei "o resultado atual está errado", e ele prontamente me deu os fixes novamente. \\
+        \bottomrule
+    \end{tabularx}
+    \fonte{Elaborado pelo autor}
+\end{table}
+\FloatBarrier
+
+\begin{table}[ht]
+    \caption{Respostas da questão 10 de todos do grupo sem IA}
+    \label{tab:questao10_sem_ia}
+    \centering%
+    \footnotesize
+    \begin{tabularx}{\textwidth}{lXXXX}
+        \toprule
+        \textbf{Participante} & \textbf{Como integrante do grupo que resolveu o desafio sem IA Generativa, quais obstáculos (se houveram) você enfrentou? Descreva em poucas palavras.} \\
+        \midrule
+        Desenvolvedor 1 & Encontrar os bugs em si. \\
+        \midrule
+        Desenvolvedor 2 & Senti falta do autocomplete fornecido pelo windsurf, já que utilizo bastante para tarefas mais manuais. \\
+        \midrule
+        Desenvolvedor 3 & A pesquisa por informações e a revisão de código tornam-se muito mais demoradas e complicadas sem o uso de IA. \\
+        \bottomrule
+    \end{tabularx}
+    \fonte{Elaborado pelo autor}
+\end{table}
+\FloatBarrier
+
+\begin{table}[ht]
+    \caption{Respostas da questão 10 de todos do grupo com IA}
+    \label{tab:questao10_com_ia}
+    \centering%
+    \footnotesize
+    \begin{tabularx}{\textwidth}{lXXXX}
+        \toprule
+        \textbf{Participante} & \textbf{Como integrante do grupo que resolveu o desafio com IA Generativa, quais obstáculos (se houveram) você enfrentou? Descreva em poucas palavras.} \\
+        \midrule
+        Desenvolvedor 4 & chatgpt free, tem um limite muito pequeno de entradas, tive que ir para o Copilot \\
+        \midrule
+        Desenvolvedor 5 & Nenhum. \\
+        \midrule
+        Desenvolvedor 6 & Com IA, nenhum. \\
+        \bottomrule
+    \end{tabularx}
+    \fonte{Elaborado pelo autor}
+\end{table}
+\FloatBarrier
+
+\begin{table}[ht]
+    \caption{Respostas da questão 11 de todos do grupo sem IA}
+    \label{tab:questao11_sem_ia}
+    \centering%
+    \footnotesize
+    \begin{tabularx}{\textwidth}{lXXXX}
+        \toprule
+        \textbf{Participante} & \textbf{Algum feedback adicional que gostaria de compartilhar referente ao experimento?} \\
+        \midrule
+        Desenvolvedor 2 & Faltou ser um pouco mais claro na descrição do problema \\
+        \midrule
+        Desenvolvedor 3 & Interessante notar como a IA se tornou uma ferramenta tão importante no meu processo de desenvolvimento. Antes do experimente eu poderia dizer que fácilmente conseguiria desenvolver sem o uso de IA mas após ele consigo notar que o processo se torna muito mais demorado sem o uso da mesma. \\
+        \bottomrule
+    \end{tabularx}
+    \fonte{Elaborado pelo autor}
+\end{table}
+\FloatBarrier
+
+\begin{table}[ht]
+    \caption{Respostas da questão 11 de todos do grupo com IA}
+    \label{tab:questao11_com_ia}
+    \centering%
+    \footnotesize
+    \begin{tabularx}{\textwidth}{lXXXX}
+        \toprule
+        \textbf{Participante} & \textbf{Algum feedback adicional que gostaria de compartilhar referente ao experimento?} \\
+        \midrule
+        Desenvolvedor 6 & seria muito mais simples se nas instruções não houvessem prints da tela, mas sim textos de input e output, pra que a gente copiasse e colasse, invés de ter que ler a imagem e copiar. \\
+        \bottomrule
+    \end{tabularx}
+    \fonte{Elaborado pelo autor}
+\end{table}
+\FloatBarrier
+
+\section{CÓDIGO-FONTE DO DESAFIO E CÓDIGO-FONTE BASE}
+
+\renewcommand{\thelstlisting}{G.\arabic{lstlisting}}
+
+\lstinputlisting[caption={Código-fonte base do Desafio Técnico}]{source_code/main_base.js}
+
+\lstinputlisting[caption={Código-fonte do Desafio Técnico}]{source_code/main.js}
+
+\section{LISTA DE \textit{BUGS} E ANÁLISES DOS DESENVOLVEDORES}
+
+\renewcommand{\thefigure}{H.\arabic{figure}}
+\setcounter{figure}{0}
+
+\begin{figure}[ht]
+    \caption{Lista de \textit{bugs} implementados no arquivo \texttt{main.js}}
+    \label{fig:bugs}
+    \centering
+    \footnotesize
+    \begin{minipage}{.9\textwidth}
+        \centering
+        \fbox{\includegraphics[width=1\textwidth]{images/bugs.png}}
+        \fonte{Elaborado pelo autor}
+    \end{minipage}
+\end{figure}
+\FloatBarrier
+
+\begin{figure}[ht]
+    \caption{Análises dos desenvolvedores do grupo sem IA}
+    \label{fig:resultados_bugs_sem_ia}
+    \centering
+    \footnotesize
+    \begin{minipage}{.9\textwidth}
+        \centering
+        \fbox{\includegraphics[width=1\textwidth]{images/resultados_bugs_sem_ia.png}}
+        \fonte{Elaborado pelo autor}
+    \end{minipage}
+\end{figure}
+\FloatBarrier
+
+\begin{figure}[ht]
+    \caption{Análises dos desenvolvedores do grupo com IA}
+    \label{fig:resultados_bugs_com_ia}
+    \centering
+    \footnotesize
+    \begin{minipage}{.9\textwidth}
+        \centering
+        \fbox{\includegraphics[width=1\textwidth]{images/resultados_bugs_com_ia.png}}
+        \fonte{Elaborado pelo autor}
+    \end{minipage}
+\end{figure}
+\FloatBarrier
 
 \end{document}
